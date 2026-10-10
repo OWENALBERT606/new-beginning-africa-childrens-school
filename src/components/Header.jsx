@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Mail, Menu, Phone, X } from 'lucide-react'
+import { ChevronDown, Mail, Menu, Phone, X } from 'lucide-react'
 import { navigation, schools, site } from '../data/site.js'
+
+// Below this width the menu collapses into the mobile panel (matches the CSS breakpoint).
+const DESKTOP = '(min-width: 1081px)'
 
 function Brand() {
   return (
@@ -20,6 +23,29 @@ function Brand() {
 
 function Header() {
   const [open, setOpen] = useState(false)
+  // Dropdown state: 'auto' follows hover and keyboard focus, 'open' is pinned by
+  // a click, 'closed' hides it once a page is chosen until the pointer leaves.
+  const [dropdown, setDropdown] = useState('auto')
+  const itemRef = useRef(null)
+
+  // A pinned dropdown closes on Escape or a click anywhere else.
+  useEffect(() => {
+    if (dropdown !== 'open') return undefined
+    const onClick = (event) => {
+      if (!itemRef.current?.contains(event.target)) setDropdown('auto')
+    }
+    const onKey = (event) => {
+      if (event.key === 'Escape') setDropdown('auto')
+    }
+    document.addEventListener('click', onClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('click', onClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [dropdown])
+
+  const toggleDropdown = () => setDropdown((value) => (value === 'open' ? 'auto' : 'open'))
 
   return (
     <header className="header">
@@ -54,11 +80,56 @@ function Header() {
         </button>
 
         <nav id="site-nav" className={`nav${open ? ' is-open' : ''}`} aria-label="Main" onClick={() => setOpen(false)}>
-          {navigation.map((item) => (
-            <NavLink key={item.to} to={item.to} end={item.to === '/'} className="nav__link">
-              {item.label}
-            </NavLink>
-          ))}
+          {navigation.map((item) =>
+            item.children ? (
+              <div
+                className={`nav__item${dropdown === 'open' ? ' is-open' : ''}${dropdown === 'closed' ? ' is-closed' : ''}`}
+                key={item.to}
+                ref={itemRef}
+                onMouseLeave={() => setDropdown((value) => (value === 'closed' ? 'auto' : value))}
+              >
+                <NavLink
+                  to={item.to}
+                  className="nav__link"
+                  aria-haspopup="true"
+                  aria-expanded={dropdown === 'open'}
+                  onClick={(event) => {
+                    // On desktop a click opens the dropdown instead of leaving the page;
+                    // in the mobile panel the sub-links are already listed underneath.
+                    if (!window.matchMedia(DESKTOP).matches) return
+                    event.preventDefault()
+                    event.stopPropagation()
+                    toggleDropdown()
+                  }}
+                >
+                  {item.label}
+                </NavLink>
+                <button
+                  className="nav__caret"
+                  type="button"
+                  aria-expanded={dropdown === 'open'}
+                  aria-label={`${item.label} menu`}
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    toggleDropdown()
+                  }}
+                >
+                  <ChevronDown size={16} aria-hidden="true" />
+                </button>
+                <div className="nav__menu" onClick={() => setDropdown('closed')}>
+                  {item.children.map((child) => (
+                    <NavLink key={child.to} to={child.to} className="nav__menu-link">
+                      {child.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <NavLink key={item.to} to={item.to} end={item.to === '/'} className="nav__link">
+                {item.label}
+              </NavLink>
+            ),
+          )}
           <Link className="btn btn--primary btn--sm" to="/admissions">
             Admissions
           </Link>

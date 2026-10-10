@@ -23,6 +23,7 @@ function HeroSlides({ slides, interval = 5000, className = '' }) {
           src={slide.src}
           alt={index === active ? slide.alt : ''}
           aria-hidden={index !== active}
+          style={slide.position ? { objectPosition: slide.position } : undefined}
         />
       ))}
       <div className="slides__dots">

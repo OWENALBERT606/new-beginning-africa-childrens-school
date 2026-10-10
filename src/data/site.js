@@ -2,24 +2,43 @@
 // contact details, the two schools' copy, navigation and the photo gallery.
 
 export const site = {
-  name: 'New Beginning Schools',
+  name: 'New Beginning African Children Schools',
   strapline: 'Primary & Vocational Secondary',
   description:
     "New Beginning African Children's School and New Beginning Vocational Secondary School — a primary and a secondary school growing together in Buikwe District, Uganda.",
+  membership: 'A member of African Children Schools',
+  theme: {
+    year: '2026',
+    text: 'A rope made of three cords is hard to break',
+    reference: 'Ecclesiastes 4:12',
+    call: 'A call for teachers, parents, pupils and students working together for the success of our schools.',
+  },
   location: 'Bugeye LC 1 village, Lubanyi Parish, Buikwe District',
   address: 'P.O. Box 11731, Kampala, Uganda',
   email: 'newbegvocs@gmail.com',
+  // WhatsApp number in international format, digits only.
+  whatsapp: '256704345743',
   phones: [
     { label: '+256 704 345 743', href: 'tel:+256704345743' },
     { label: '+256 709 806 330', href: 'tel:+256709806330' },
   ],
 }
 
+export const aboutLinks = [
+  { label: 'Our History', to: '/about/history' },
+  { label: 'School Anthem', to: '/about/anthem' },
+  { label: 'School Profile', to: '/about/profile' },
+  { label: 'Director’s Message', to: '/about/directors-message' },
+  { label: 'Principal’s Message', to: '/about/principals-message' },
+  { label: 'Administration', to: '/about/administration' },
+]
+
 export const navigation = [
   { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
+  { label: 'About', to: '/about', children: aboutLinks },
   { label: 'Primary School', to: '/primary' },
   { label: 'Secondary School', to: '/secondary' },
+  { label: 'Church', to: '/church' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -275,6 +294,78 @@ export const values = [
 
 export const gallery = [
   {
+    src: '/images/primary-classroom.jpg',
+    alt: 'Primary pupils in checked uniforms clapping at their desks in a bright classroom',
+    caption: 'A lively primary classroom',
+    school: 'Primary',
+  },
+  {
+    src: '/images/aerial-campus.jpg',
+    alt: 'Aerial view of red-roofed school buildings, lawns and paths surrounded by trees',
+    caption: 'The campus from the air',
+    school: 'Campus',
+  },
+  {
+    src: '/images/primary-meal.jpg',
+    alt: 'Young pupils in checked dresses seated at a table with plates of food',
+    caption: 'Meal time for our youngest learners',
+    school: 'Primary',
+  },
+  {
+    src: '/images/block-front.jpg',
+    alt: 'A long classroom block with orange pillars and blue walls behind a planted lawn',
+    caption: 'Classroom block and lawn',
+    school: 'Campus',
+  },
+  {
+    src: '/images/primary-choir.jpg',
+    alt: 'Primary pupils in checked uniforms standing together and singing in a hall',
+    caption: 'Singing together',
+    school: 'Primary',
+  },
+  {
+    src: '/images/staff-team.jpg',
+    alt: 'A long row of staff standing in front of a school building marked African Children Schools',
+    caption: 'Our team',
+    school: 'Community',
+  },
+  {
+    src: '/images/aerial-classroom-block.jpg',
+    alt: 'Aerial view of an L-shaped classroom block around a lawn, with hills beyond',
+    caption: 'Classrooms around the courtyard',
+    school: 'Campus',
+  },
+  {
+    src: '/images/primary-lunch-line.jpg',
+    alt: 'Primary pupils queuing with plates as lunch is served outdoors',
+    caption: 'Lunch is served',
+    school: 'Primary',
+  },
+  {
+    src: '/images/courtyard.jpg',
+    alt: 'A classroom block with blue doors and orange pillars facing an open courtyard',
+    caption: 'The courtyard',
+    school: 'Campus',
+  },
+  {
+    src: '/images/visitor.jpg',
+    alt: 'A smiling visitor holding a young pupil in a checked school dress',
+    caption: 'With a friend of the school',
+    school: 'Community',
+  },
+  {
+    src: '/images/aerial-wide.jpg',
+    alt: 'Wide aerial view of school buildings and grounds at dusk',
+    caption: 'A growing campus',
+    school: 'Campus',
+  },
+  {
+    src: '/images/aerial-village.jpg',
+    alt: 'Aerial view of school buildings among gardens and banana plants',
+    caption: 'Our school from above',
+    school: 'Campus',
+  },
+  {
     src: '/images/reading.jpg',
     alt: 'Secondary students reading together on a bench outside a classroom block',
     caption: 'Reading time outside the classroom block',
@@ -399,6 +490,12 @@ export const gallery = [
     alt: 'Students standing with teachers and staff on the steps of the school hall',
     caption: 'Students with their teachers',
     school: 'Secondary',
+  },
+  {
+    src: '/images/wheelchair-fitting.jpg',
+    alt: 'Visitors and helpers fitting an elderly man into a new wheelchair',
+    caption: 'A new wheelchair for a neighbour',
+    school: 'Community',
   },
   {
     src: '/images/community-wheelchairs.jpg',

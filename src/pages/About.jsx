@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Eye, Target } from 'lucide-react'
+import AboutNav from '../components/AboutNav.jsx'
 import CTASection from '../components/CTASection.jsx'
 import PageHero from '../components/PageHero.jsx'
 import { usePageMeta } from '../components/usePageMeta.js'
@@ -15,6 +16,7 @@ function About() {
         title="Two schools. One family. One purpose."
         text="New Beginning brings a primary school and a vocational secondary school together, so a child can grow up in one community that knows them well."
       />
+      <AboutNav />
 
       <section className="section">
         <div className="container split">

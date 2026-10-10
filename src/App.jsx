@@ -3,15 +3,18 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import ScrollManager from './components/ScrollManager.jsx'
+import SupportWidgets from './components/SupportWidgets.jsx'
 import { useScrollReveal } from './components/useScrollReveal.js'
 import Home from './pages/Home.jsx'
 
 // Home ships in the main bundle; every other route is split so the first load
 // only pays for what the visitor actually opens.
 const About = lazy(() => import('./pages/About.jsx'))
+const AboutSection = lazy(() => import('./pages/AboutSection.jsx'))
 const Primary = lazy(() => import('./pages/Primary.jsx'))
-const School = lazy(() => import('./pages/School.jsx'))
+const Secondary = lazy(() => import('./pages/Secondary.jsx'))
 const Admissions = lazy(() => import('./pages/Admissions.jsx'))
+const Church = lazy(() => import('./pages/Church.jsx'))
 const Gallery = lazy(() => import('./pages/Gallery.jsx'))
 const Contact = lazy(() => import('./pages/Contact.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
@@ -45,9 +48,16 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/about/history" element={<AboutSection page="history" />} />
+              <Route path="/about/anthem" element={<AboutSection page="anthem" />} />
+              <Route path="/about/profile" element={<AboutSection page="profile" />} />
+              <Route path="/about/directors-message" element={<AboutSection page="director" />} />
+              <Route path="/about/principals-message" element={<AboutSection page="principal" />} />
+              <Route path="/about/administration" element={<AboutSection page="administration" />} />
               <Route path="/primary" element={<Primary />} />
-              <Route path="/secondary" element={<School school="secondary" />} />
+              <Route path="/secondary" element={<Secondary />} />
               <Route path="/admissions" element={<Admissions />} />
+              <Route path="/church" element={<Church />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
@@ -57,6 +67,7 @@ function App() {
       </main>
 
       <Footer />
+      <SupportWidgets />
     </>
   )
 }

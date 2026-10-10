@@ -31,10 +31,10 @@ const primaryPhotos = gallery.filter((photo) => photo.school === 'Primary')
 
 const heroSlides = [
   { src: '/images/primary-reading.jpg', alt: 'A primary pupil in a checked uniform reading a textbook at his desk' },
+  { src: '/images/primary-meal.jpg', alt: 'Young pupils in checked dresses seated at a table with plates of food' },
   { src: '/images/primary-smile.jpg', alt: 'A young primary pupil in a checked uniform smiling at his desk' },
   { src: '/images/primary-girl.jpg', alt: 'A primary pupil in a checked dress posing with a hand on her hip' },
   { src: '/images/primary-sports.jpg', alt: 'A primary pupil smiling in the school sports uniform' },
-  { src: '/images/primary-lunch.jpg', alt: 'A primary pupil smiling and holding a full plate of food' },
 ]
 
 const heroFeatures = [
@@ -75,8 +75,8 @@ const stages = [
   },
   {
     icon: BookOpen,
-    photo: '/images/primary-sports.jpg',
-    alt: 'A primary pupil smiling in the school sports uniform',
+    photo: '/images/primary-classroom.jpg',
+    alt: 'Primary pupils in checked uniforms clapping at their desks in a bright classroom',
     title: 'Upper Primary',
     tagline: 'Primary Five – Seven',
     text: 'Deeper subject knowledge and steady preparation for the Primary Leaving Examination.',

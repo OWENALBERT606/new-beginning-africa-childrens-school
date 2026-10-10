@@ -16,9 +16,16 @@ const today = new Date().toISOString().slice(0, 10)
 const routes = [
   { path: '/', priority: '1.0' },
   { path: '/about', priority: '0.8' },
+  { path: '/about/history', priority: '0.6' },
+  { path: '/about/anthem', priority: '0.5' },
+  { path: '/about/profile', priority: '0.6' },
+  { path: '/about/directors-message', priority: '0.5' },
+  { path: '/about/principals-message', priority: '0.5' },
+  { path: '/about/administration', priority: '0.6' },
   { path: '/primary', priority: '0.9' },
   { path: '/secondary', priority: '0.9' },
   { path: '/admissions', priority: '0.9' },
+  { path: '/church', priority: '0.6' },
   { path: '/gallery', priority: '0.6' },
   { path: '/contact', priority: '0.8' },
 ]

@@ -17,6 +17,7 @@ function Footer() {
             {schools.primary.name} and {schools.secondary.name} — a primary and a secondary school
             growing together.
           </p>
+          <p className="footer__member">{site.membership}.</p>
         </div>
 
         <div>

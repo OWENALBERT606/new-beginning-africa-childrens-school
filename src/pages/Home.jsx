@@ -22,9 +22,9 @@ import { schools, site, values } from '../data/site.js'
 
 const heroSlides = [
   { src: '/images/reading.jpg', alt: 'Secondary students reading together outside a classroom block' },
+  { src: '/images/primary-classroom.jpg', alt: 'Primary pupils in checked uniforms clapping at their desks in a bright classroom' },
+  { src: '/images/aerial-campus.jpg', alt: 'Aerial view of red-roofed school buildings, lawns and paths surrounded by trees' },
   { src: '/images/fun-day.jpg', alt: 'Primary pupils in colourful uniforms watching mascots in bear and rabbit costumes' },
-  { src: '/images/exam-hall.jpg', alt: 'Secondary students writing an examination in a large hall' },
-  { src: '/images/campus-buildings.jpg', alt: 'Two red-roofed school buildings across a green lawn under a blue sky' },
   { src: '/images/girls-computer-centre.jpg', alt: 'Secondary school girls in front of the Larry Bell Family Computer Centre' },
 ]
 
@@ -381,8 +381,8 @@ function Home() {
           </div>
           <Link className="campus__media" to="/gallery" aria-label="Open the photo gallery">
             <img
-              src="/images/girls-computer-centre.jpg"
-              alt="Secondary school girls standing in rows in front of the Larry Bell Family Computer Centre"
+              src="/images/block-front.jpg"
+              alt="A long classroom block with orange pillars and blue walls behind a planted lawn"
               loading="lazy"
             />
             <span className="campus__button">
@@ -537,6 +537,14 @@ function Home() {
               Words we <em className="accent">live by</em>
             </h2>
           </header>
+          <figure className="theme-card">
+            <p className="theme-card__year">Our {site.theme.year} theme</p>
+            <blockquote>“{site.theme.text}”</blockquote>
+            <figcaption>
+              <strong>{site.theme.reference}</strong>
+              {site.theme.call}
+            </figcaption>
+          </figure>
           <div className="quote-grid">
             {[schools.primary, schools.secondary].map((school) => (
               <figure className={`quote-card ${school.theme}`} key={school.slug}>
