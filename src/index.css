@@ -399,6 +399,54 @@ ol {
   margin-left: 0.5rem;
 }
 
+.btn--donate {
+  background: linear-gradient(135deg, #ffd45e, var(--gold) 55%, #f0a500);
+  color: var(--navy);
+}
+
+.btn--donate svg {
+  fill: var(--red);
+  color: var(--red);
+}
+
+.nav .btn + .btn {
+  margin-left: 0.4rem;
+}
+
+/* Two buttons and eight links: tighten the menu on mid-sized laptops. */
+@media (min-width: 1081px) and (max-width: 1320px) {
+  .nav__link {
+    padding-inline: 0.4rem;
+    font-size: 0.93rem;
+  }
+
+  .nav .btn {
+    margin-left: 0.25rem;
+    padding-inline: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .nav .btn + .btn {
+    margin-left: 0.3rem;
+  }
+
+  .brand__logos img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand__text strong {
+    font-size: 1.2rem;
+  }
+}
+
+/* On the narrowest desktop widths the two logos stand in for the name. */
+@media (min-width: 1081px) and (max-width: 1180px) {
+  .brand__text {
+    display: none;
+  }
+}
+
 /* Keep the school name on one line; on smaller laptops drop the strapline
    and tighten the links so the full menu still fits beside it. */
 .brand {

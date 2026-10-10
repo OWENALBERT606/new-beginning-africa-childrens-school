@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ChevronDown, Mail, Menu, Phone, X } from 'lucide-react'
+import { ChevronDown, Heart, Mail, Menu, Phone, X } from 'lucide-react'
 import { navigation, schools, site } from '../data/site.js'
 
 // Below this width the menu collapses into the mobile panel (matches the CSS breakpoint).
@@ -132,6 +132,9 @@ function Header() {
           )}
           <Link className="btn btn--primary btn--sm" to="/admissions">
             Admissions
+          </Link>
+          <Link className="btn btn--donate btn--sm" to="/donate">
+            <Heart size={16} aria-hidden="true" /> Donate
           </Link>
         </nav>
       </div>
