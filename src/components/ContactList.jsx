@@ -31,7 +31,8 @@ function ContactList() {
           <MapPin size={20} aria-hidden="true" />
         </span>
         <div>
-          <strong>Postal address</strong>
+          <strong>Find us</strong>
+          <span>{site.location}</span>
           <span>{site.address}</span>
         </div>
       </li>

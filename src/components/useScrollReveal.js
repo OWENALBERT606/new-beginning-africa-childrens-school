@@ -16,6 +16,8 @@ const SELECTOR = [
   '.cta__inner > *',
   '.footer__grid > *',
   '.hero-card',
+  '.rank__copy',
+  '.rank__clip',
   '.counter',
   '.programme',
   '.campus > *',
@@ -25,6 +27,18 @@ const SELECTOR = [
   '.stand li',
   '.quote-card',
   '.partner',
+  '.pp-welcome__inner > *',
+  '.pp-rank',
+  '.pp-fact',
+  '.pp-stage',
+  '.mv',
+  '.peek__item',
+  '.fees',
+  '.glance',
+  '.pp-band__item',
+  '.pp-activities > img',
+  '.pp-activity',
+  '.pp-bottom > *',
 ].join(',')
 
 const STAGGER_MS = 90

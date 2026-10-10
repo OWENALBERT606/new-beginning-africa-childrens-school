@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Eye, Target } from 'lucide-react'
 import CTASection from '../components/CTASection.jsx'
 import PageHero from '../components/PageHero.jsx'
 import { usePageMeta } from '../components/usePageMeta.js'
@@ -41,6 +41,45 @@ function About() {
               alt="Students standing with teachers and staff on the steps of the school hall"
               loading="lazy"
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="section why">
+        <div className="container">
+          <header className="section-head section-head--light">
+            <p className="eyebrow eyebrow--light">Our story</p>
+            <h2>Started with a vision for the transformation of Africa</h2>
+            <p className="story">
+              {schools.secondary.name} – Buikwe was started in 2025 by Bishop Edward Ssemango and Pastor Eva
+              Nabaggala Ssemango of Seeta Lumuli, Mukono District, under the patronage of Dr. Peter Nalos. It is an
+              inclusive day and boarding school, built on a born-again Christian foundation and open to all
+              religious denominations.
+            </p>
+          </header>
+          <div className="mv-grid">
+            <article className="mv">
+              <span className="feature__icon">
+                <Target size={24} aria-hidden="true" />
+              </span>
+              <h2>Our mission</h2>
+              <p>{schools.secondary.mission}</p>
+            </article>
+            <article className="mv">
+              <span className="feature__icon">
+                <Eye size={24} aria-hidden="true" />
+              </span>
+              <h2>Our vision</h2>
+              <p>{schools.secondary.vision}</p>
+            </article>
+          </div>
+          <div className="core-values">
+            <h3>Our core values</h3>
+            <ul className="chips">
+              {schools.secondary.coreValues.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

@@ -403,13 +403,96 @@ ol {
 .hero {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   min-height: min(82vh, 720px);
-  padding: clamp(4rem, 9vw, 7rem) 0 clamp(8rem, 14vw, 11rem);
-  background:
-    linear-gradient(95deg, rgb(15 26 60 / 0.94) 0%, rgb(15 26 60 / 0.78) 42%, rgb(15 26 60 / 0.25) 100%),
-    url('/images/reading.jpg') center 35% / cover no-repeat;
+  padding: clamp(2.25rem, 4vw, 3.5rem) 0 clamp(8rem, 14vw, 11rem);
+  background: var(--navy);
   color: var(--white);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.slides.hero__slides {
+  position: absolute;
+  inset: 0;
+}
+
+/* Dark wash over the photos so the headline stays readable. */
+.hero__slides::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(95deg, rgb(15 26 60 / 0.94) 0%, rgb(15 26 60 / 0.78) 42%, rgb(15 26 60 / 0.25) 100%);
+}
+
+.hero__slides .slides__img {
+  object-position: center 35%;
+}
+
+.hero__slides .slides__dots {
+  top: 42%;
+  right: 1.5rem;
+  bottom: auto;
+  left: auto;
+  flex-direction: column;
+  transform: translateY(-50%);
+}
+
+/* ---------- Photo carousel ---------- */
+
+.slides {
+  position: relative;
+  overflow: hidden;
+}
+
+.slides__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 1.2s ease,
+    transform 7s linear;
+}
+
+.slides__img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slides__dots {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+  transform: translateX(-50%);
+}
+
+.slides__dots button {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+}
+
+.slides__dots button.is-active {
+  background: var(--white);
+  transform: scale(1.25);
 }
 
 .hero__copy {
@@ -462,7 +545,7 @@ ol {
 
 .hero-cards__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 
@@ -536,6 +619,249 @@ ol {
 
 .hero-card:hover .hero-card__icon {
   background: var(--white);
+}
+
+/* ---------- Home: district ranking ---------- */
+
+.rank-section {
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.rank {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 3.75rem);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(30rem 20rem at 0% 0%, rgb(255 197 51 / 0.2), transparent 70%),
+    radial-gradient(34rem 22rem at 100% 100%, rgb(225 27 34 / 0.45), transparent 70%),
+    var(--navy);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.rank__medal {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  margin-bottom: 1.5rem;
+}
+
+/* Slowly turning dashed ring around the medal. */
+.rank__medal::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border: 2px dashed rgb(255 197 51 / 0.75);
+  border-radius: 50%;
+  animation: spin 18s linear infinite;
+}
+
+.rank__disc {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffe08a, var(--gold) 45%, #e89a00);
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 0.9;
+  animation: medal-glow 2.6s ease-in-out infinite;
+}
+
+.rank__disc small {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rank__star {
+  position: absolute;
+  fill: var(--gold);
+  color: var(--gold);
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+.rank__star--a {
+  top: -14px;
+  right: -26px;
+}
+
+.rank__star--b {
+  right: -34px;
+  bottom: 14px;
+  animation-delay: 0.8s;
+}
+
+.rank__star--c {
+  top: 8px;
+  left: -30px;
+  animation-delay: 1.5s;
+}
+
+.rank__kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.rank h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.rank__copy > p:not([class]) {
+  max-width: 34rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.rank__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.rank__facts li {
+  padding: 0.45rem 1rem;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.rank__clip {
+  margin: 0;
+  text-align: center;
+}
+
+.rank__paper {
+  position: relative;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 24px 50px -18px rgb(0 0 0 / 0.6);
+  transform: rotate(2.5deg);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.rank__paper:hover {
+  transform: rotate(0) scale(1.02);
+}
+
+.rank__paper img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+/* Marker-pen swipe over our school's row in the clipping. */
+.rank__highlight {
+  position: absolute;
+  top: 13.5%;
+  left: 4.5%;
+  width: 80%;
+  height: 8%;
+  border-radius: 4px;
+  background: rgb(255 214 0 / 0.55);
+  mix-blend-mode: multiply;
+  transform-origin: left center;
+}
+
+.rank__clip figcaption {
+  margin-top: 1.4rem;
+  font-size: 0.85rem;
+  color: rgb(255 255 255 / 0.75);
+}
+
+/* These play once the section scrolls into view. */
+.rank__copy[data-reveal='in'] .rank__disc {
+  animation:
+    medal-pop 0.9s cubic-bezier(0.3, 1.5, 0.5, 1) 0.2s backwards,
+    medal-glow 2.6s ease-in-out 1.1s infinite;
+}
+
+.rank__copy[data-reveal='in'] .rank__facts li {
+  animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.rank__copy[data-reveal='in'] .rank__facts li:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.rank__copy[data-reveal='in'] .rank__facts li:nth-child(2) {
+  animation-delay: 0.75s;
+}
+
+.rank__copy[data-reveal='in'] .rank__facts li:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.rank__clip[data-reveal='in'] .rank__highlight {
+  animation: swipe 0.9s cubic-bezier(0.6, 0, 0.2, 1) 1s backwards;
+}
+
+@keyframes medal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2) rotate(-200deg);
+  }
+}
+
+@keyframes medal-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(255 197 51 / 0.55);
+  }
+
+  50% {
+    box-shadow: 0 0 0 16px rgb(255 197 51 / 0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7) rotate(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(20deg);
+  }
+}
+
+@keyframes swipe {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .rank {
+    grid-template-columns: 1fr;
+  }
+
+  .rank__paper {
+    transform: rotate(1.5deg);
+  }
 }
 
 /* ---------- Home: about ---------- */
@@ -1148,7 +1474,6 @@ ol {
 }
 
 @media (max-width: 1080px) {
-  .hero-cards__grid,
   .counters__grid,
   .programme-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1158,7 +1483,8 @@ ol {
 @media (max-width: 860px) {
   .campus,
   .quote-grid,
-  .about-points {
+  .about-points,
+  .hero-cards__grid {
     grid-template-columns: 1fr;
   }
 
@@ -1176,7 +1502,6 @@ ol {
 }
 
 @media (max-width: 600px) {
-  .hero-cards__grid,
   .counters__grid,
   .programme-grid,
   .why__grid {
@@ -1792,6 +2117,27 @@ ol {
   gap: 1rem;
 }
 
+/* Taller tiles, four across: suits the mostly upright primary school photos. */
+.gallery--portrait {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery--portrait .gallery__item img {
+  aspect-ratio: 3 / 4;
+  object-position: center 25%;
+}
+
+.pp-gallery-more {
+  margin: 2.5rem 0 0;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .gallery.gallery--portrait {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .gallery__item {
   position: relative;
   overflow: hidden;
@@ -1888,6 +2234,960 @@ ol {
 
 .lightbox__btn--next {
   right: 1rem;
+}
+
+/* ---------- Secondary school page: mission, fees ---------- */
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.mv {
+  padding: 2rem;
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.mv h2 {
+  font-size: 1.5rem;
+}
+
+.mv p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.mv,
+.chips li {
+  color: var(--ink);
+}
+
+.section-head p.story:last-child {
+  color: rgb(255 255 255 / 0.85);
+}
+
+.core-values {
+  margin-top: 2.5rem;
+}
+
+.peek-wrap {
+  padding-bottom: 0;
+}
+
+.peek {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.peek__item {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.peek__item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.peek__item img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.peek__item figcaption {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .peek {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.core-values h3 {
+  margin-bottom: 1rem;
+}
+
+.fees {
+  width: 100%;
+  margin: 1.25rem 0 1.5rem;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.fees th,
+.fees td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.fees th {
+  font-weight: 500;
+}
+
+.fees td {
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.fees tr:last-child th,
+.fees tr:last-child td {
+  border-bottom: 0;
+}
+
+.glance a:not(.btn) {
+  color: inherit;
+}
+
+.glance .btn {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 860px) {
+  .mv-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Primary school page ---------- */
+
+.pp {
+  --maroon: var(--red);
+  --maroon-deep: var(--red-deep);
+}
+
+.pp .eyebrow,
+.pp .link-arrow {
+  color: var(--maroon);
+}
+
+.pp .btn--primary {
+  background: var(--maroon);
+}
+
+.pp .btn--primary:hover {
+  background: var(--maroon-deep);
+}
+
+.pp-hero {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  background:
+    radial-gradient(44rem 28rem at 78% 40%, var(--red-soft), transparent 70%),
+    var(--cream);
+}
+
+.pp-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 300px 320px;
+  align-items: center;
+  gap: 2rem;
+}
+
+.pp-hero__photo {
+  width: 100%;
+  aspect-ratio: 3 / 4.3;
+  border: 6px solid var(--white);
+  border-radius: 150px 150px var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  animation: scale-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s backwards;
+}
+
+.pp-hero__photo .slides__img {
+  object-position: center 22%;
+}
+
+.pp-hero__copy {
+  max-width: 34rem;
+}
+
+.pp-hero__kicker {
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pp-hero h1 {
+  font-size: clamp(2.3rem, 4.4vw, 3.5rem);
+  line-height: 1.06;
+}
+
+.pp-hero h1 em {
+  display: block;
+  font-style: normal;
+  color: var(--maroon);
+}
+
+.pp-hero__text {
+  max-width: 26rem;
+  font-size: 1.1rem;
+}
+
+.pp-hero__features {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+}
+
+.pp-hero__features li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 5.5rem;
+  padding: 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.pp-hero__features li + li {
+  border-left: 1px solid var(--line);
+}
+
+.pp-hero__features svg {
+  color: var(--maroon);
+}
+
+.pp-enquiry {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.pp-enquiry__head {
+  padding: 1.1rem 1.4rem;
+  background: var(--maroon);
+  color: var(--white);
+}
+
+.pp-enquiry__head h2 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pp-enquiry__head p {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.pp-enquiry__body {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1.4rem;
+}
+
+.pp-enquiry .btn {
+  border-radius: 8px;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pp-welcome {
+  padding-bottom: 0;
+}
+
+.pp-welcome__inner {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr 1.7fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.pp-welcome__inner p:not([class]) {
+  font-size: 0.97rem;
+  color: var(--muted);
+}
+
+.pp-welcome h2 {
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+}
+
+.pp-welcome__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.pp-welcome__badge img {
+  width: auto;
+  height: 88%;
+  object-fit: contain;
+}
+
+.pp-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem 1rem;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.pp-fact {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pp-fact svg {
+  flex-shrink: 0;
+  color: var(--maroon);
+}
+
+.pp-fact strong {
+  display: block;
+  font-size: 1.05rem;
+  white-space: nowrap;
+  line-height: 1.2;
+  color: var(--maroon);
+}
+
+.pp-fact span {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.pp-rank-wrap {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.pp-rank {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-left: 6px solid var(--maroon);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.pp-rank img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.pp-rank h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+}
+
+.pp-rank p:not([class]) {
+  margin: 0;
+  color: var(--muted);
+}
+
+.pp-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.pp-stage {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.pp-stage:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.pp-stage__art {
+  position: relative;
+}
+
+.pp-stage__art img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius) var(--radius) 0 0;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.pp-stage__badge {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  background: var(--maroon);
+  color: var(--white);
+}
+
+.pp-stage__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+.pp-stage__body h3 {
+  margin-bottom: 0.15rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.pp-stage__tagline {
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--maroon);
+}
+
+.pp-stage__body p:not([class]) {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.pp-stage .link-arrow {
+  margin-top: auto;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pp-band {
+  padding: 2rem 0;
+  background: linear-gradient(120deg, var(--maroon-deep), var(--maroon));
+  color: var(--white);
+}
+
+.pp-band__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.pp-band__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.pp-band__item + .pp-band__item {
+  border-left: 1px solid rgb(255 255 255 / 0.25);
+}
+
+.pp-band__item svg {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.pp-band__item strong {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.pp-band__item span {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.pp-activities {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.pp-activities img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.pp-activities ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.pp-activity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-weight: 600;
+  transition:
+    transform 0.3s,
+    border-color 0.3s;
+}
+
+.pp-activity:hover {
+  transform: translateY(-4px);
+  border-color: var(--maroon);
+}
+
+.pp-activity span {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--maroon);
+  color: var(--white);
+}
+
+.pp-bottom-wrap {
+  padding-top: 0;
+}
+
+.pp-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pp-panel,
+.pp-tour {
+  padding: 1.75rem;
+  border-radius: var(--radius);
+}
+
+.pp-panel {
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.pp-panel h2,
+.pp-tour h2 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pp-panel h2 {
+  color: var(--maroon);
+}
+
+.pp-panel__quote {
+  color: var(--maroon);
+}
+
+.pp-panel blockquote {
+  margin: 0.5rem 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.pp-panel__by {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.pp-panel__by img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.pp-panel__by strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.pp-steps {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.pp-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.pp-steps__num {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  width: 46px;
+  border: 1px solid var(--maroon);
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.pp-steps__num small {
+  width: 100%;
+  background: var(--maroon);
+  color: var(--white);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pp-steps strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.pp-steps div span {
+  display: block;
+  line-height: 1.4;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.pp-tour {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background:
+    radial-gradient(16rem 12rem at 100% 100%, rgb(255 255 255 / 0.14), transparent 70%),
+    linear-gradient(135deg, var(--maroon), var(--maroon-deep));
+  color: var(--white);
+}
+
+.pp-tour p {
+  color: rgb(255 255 255 / 0.9);
+}
+
+.pp-tour .btn {
+  border-radius: 8px;
+}
+
+.pp-tour__phone {
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+@media (max-width: 1080px) {
+  .pp-hero__inner {
+    grid-template-columns: 1fr 320px;
+  }
+
+  .pp-hero__photo {
+    display: none;
+  }
+
+  .pp-welcome__inner {
+    grid-template-columns: 0.6fr 1fr;
+  }
+
+  .pp-facts {
+    grid-column: 1 / -1;
+  }
+
+  .pp-stage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1.25rem;
+  }
+
+  .pp-band__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 0;
+  }
+
+  .pp-band__item {
+    justify-content: flex-start;
+  }
+
+  .pp-band__item:nth-child(4) {
+    border-left: 0;
+  }
+
+  .pp-bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pp-tour {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 860px) {
+  .pp-hero__inner,
+  .pp-activities,
+  .pp-rank {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-enquiry {
+    max-width: 26rem;
+  }
+
+  .pp-hero__features {
+    gap: 1rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .pp-welcome__inner,
+  .pp-stage-grid,
+  .pp-bottom,
+  .pp-band__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pp-welcome__badge {
+    max-width: 14rem;
+  }
+
+  .pp-facts,
+  .pp-activities ul {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pp-band__item + .pp-band__item {
+    border-left: 0;
+  }
+
+  .pp-hero__features li {
+    width: 33.33%;
+  }
+
+  .pp-hero__features li:nth-child(4) {
+    border-left: 0;
+  }
+}
+
+/* ---------- Primary school page: motion ---------- */
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes icon-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+  }
+
+  70% {
+    transform: scale(1.18) rotate(6deg);
+  }
+}
+
+@keyframes pulse-light {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255 255 255 / 0.65);
+  }
+
+  100% {
+    box-shadow: 0 0 0 18px rgb(255 255 255 / 0);
+  }
+}
+
+/* Hero: the enquiry card slides in, the five features rise one by one. */
+.pp-enquiry {
+  animation: slide-in-right 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s backwards;
+}
+
+.pp-hero__features li {
+  animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.pp-hero__features li:nth-child(1) {
+  animation-delay: 0.55s;
+}
+
+.pp-hero__features li:nth-child(2) {
+  animation-delay: 0.65s;
+}
+
+.pp-hero__features li:nth-child(3) {
+  animation-delay: 0.75s;
+}
+
+.pp-hero__features li:nth-child(4) {
+  animation-delay: 0.85s;
+}
+
+.pp-hero__features li:nth-child(5) {
+  animation-delay: 0.95s;
+}
+
+.pp-hero__features svg {
+  transition: transform 0.3s;
+}
+
+.pp-hero__features li:hover svg {
+  transform: translateY(-4px) scale(1.15);
+}
+
+/* Welcome: the badge floats, fact icons pop as they arrive. */
+.pp-welcome__badge img {
+  animation: bob 5s ease-in-out infinite;
+}
+
+.pp-fact[data-reveal='in'] svg {
+  animation: icon-pop 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) var(--reveal-delay, 0ms) backwards;
+}
+
+/* Ranking: marker-pen swipe over our row, as on the home page. */
+.pp-rank__paper {
+  position: relative;
+}
+
+.pp-rank[data-reveal='in'] .rank__highlight {
+  animation: swipe 0.9s cubic-bezier(0.6, 0, 0.2, 1) 0.7s backwards;
+}
+
+/* Stage cards: the round badge spins on hover. */
+.pp-stage__badge {
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pp-stage:hover .pp-stage__badge {
+  transform: rotate(360deg) scale(1.12);
+}
+
+/* Subject band: icons pop in, then lift on hover. */
+.pp-band__item[data-reveal='in'] svg {
+  animation: icon-pop 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) var(--reveal-delay, 0ms) backwards;
+}
+
+.pp-band__item svg {
+  transition: transform 0.3s;
+}
+
+.pp-band__item:hover svg {
+  transform: translateY(-5px) rotate(-8deg);
+}
+
+/* Activities: the icon disc tilts on hover; the photo zooms gently. */
+.pp-activity span {
+  transition: transform 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.pp-activity:hover span {
+  transform: scale(1.15) rotate(-10deg);
+}
+
+.pp-activities > img {
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pp-activities > img:hover {
+  transform: scale(1.02);
+}
+
+/* Bottom panels: steps arrive one after another; the visit button pulses. */
+.pp-panel,
+.pp-tour {
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.pp-panel:hover,
+.pp-tour:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 48px -24px rgb(27 29 42 / 0.4);
+}
+
+.pp-panel[data-reveal='in'] .pp-steps li {
+  animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.pp-panel[data-reveal='in'] .pp-steps li:nth-child(1) {
+  animation-delay: 0.35s;
+}
+
+.pp-panel[data-reveal='in'] .pp-steps li:nth-child(2) {
+  animation-delay: 0.55s;
+}
+
+.pp-panel[data-reveal='in'] .pp-steps li:nth-child(3) {
+  animation-delay: 0.75s;
+}
+
+.pp-panel[data-reveal='in'] .pp-panel__quote {
+  animation: icon-pop 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) 0.3s backwards;
+}
+
+.pp-tour .btn {
+  animation: pulse-light 2.2s ease-out infinite;
 }
 
 /* ---------- Footer ---------- */

@@ -6,17 +6,27 @@ import {
   Hammer,
   Heart,
   Images,
-  Monitor,
   Phone,
   Quote,
   School,
   ShieldCheck,
   Sprout,
+  Star,
+  Trophy,
   Users,
 } from 'lucide-react'
 import EnquiryForm from '../components/EnquiryForm.jsx'
+import HeroSlides from '../components/HeroSlides.jsx'
 import { usePageMeta } from '../components/usePageMeta.js'
 import { schools, site, values } from '../data/site.js'
+
+const heroSlides = [
+  { src: '/images/reading.jpg', alt: 'Secondary students reading together outside a classroom block' },
+  { src: '/images/fun-day.jpg', alt: 'Primary pupils in colourful uniforms watching mascots in bear and rabbit costumes' },
+  { src: '/images/exam-hall.jpg', alt: 'Secondary students writing an examination in a large hall' },
+  { src: '/images/campus-buildings.jpg', alt: 'Two red-roofed school buildings across a green lawn under a blue sky' },
+  { src: '/images/girls-computer-centre.jpg', alt: 'Secondary school girls in front of the Larry Bell Family Computer Centre' },
+]
 
 const heroCards = [
   {
@@ -37,12 +47,6 @@ const heroCards = [
     text: 'Practical, hands-on training alongside classwork.',
     to: '/secondary',
   },
-  {
-    icon: Monitor,
-    title: 'Computer Centre',
-    text: 'ICT lessons in the Larry Bell Family Computer Centre.',
-    to: '/secondary',
-  },
 ]
 
 const counters = [
@@ -57,16 +61,18 @@ const programmes = [
     tag: 'Primary',
     title: 'Lower Primary',
     text: 'Reading, writing and number skills built steadily from the very first class.',
-    photo: '/images/primary-pupils.jpg',
-    alt: 'Primary pupils in colourful uniforms on the school compound',
+    photo: '/images/primary-sports.jpg',
+    position: 'center 22%',
+    alt: 'A primary pupil smiling in the school sports uniform',
     to: '/primary',
   },
   {
     tag: 'Primary',
     title: 'Upper Primary',
     text: 'Confident learners prepared carefully for the Primary Leaving Examination.',
-    photo: '/images/campus-students.jpg',
-    alt: 'Students in two rows in front of a brightly painted school building',
+    photo: '/images/primary-reading.jpg',
+    position: 'center 48%',
+    alt: 'A primary pupil in a checked uniform reading a textbook at his desk',
     to: '/primary',
   },
   {
@@ -80,17 +86,17 @@ const programmes = [
   {
     tag: 'Secondary',
     title: 'Vocational Skills',
-    text: 'Hands-on training that gives students something practical they can do.',
-    photo: '/images/boys-computer-centre.jpg',
-    alt: 'Secondary school boys lined up outside the computer centre',
+    text: 'Hands-on training such as tailoring and agriculture, to nurture self-dependable citizens.',
+    photo: '/images/tailoring.jpg',
+    alt: 'A student sewing at a tailoring machine during a hands-on training lesson',
     to: '/secondary',
   },
   {
     tag: 'Secondary',
     title: 'Computer Studies',
     text: 'ICT skills for study and work, taught in our own computer centre.',
-    photo: '/images/girls-computer-centre.jpg',
-    alt: 'Secondary school girls in front of the Larry Bell Family Computer Centre',
+    photo: '/images/computer-centre.jpg',
+    alt: 'The Larry Bell Family Computer Centre seen across the lawn',
     to: '/secondary',
   },
   {
@@ -104,7 +110,7 @@ const programmes = [
 ]
 
 const reasons = [
-  { icon: School, title: 'One campus', text: 'From Primary One through secondary school.' },
+  { icon: School, title: 'Top in Buikwe', text: 'Our primary school ranked first in the district in the 2025 PLE.' },
   { icon: Users, title: 'Known by name', text: 'Teachers who notice and care for every learner.' },
   { icon: ShieldCheck, title: 'Faith & discipline', text: 'Good character at the centre of school life.' },
   { icon: Hammer, title: 'Skills for life', text: 'Practical and computer skills beside classwork.' },
@@ -112,9 +118,9 @@ const reasons = [
 
 const masonry = [
   { src: '/images/girls-group.jpg', alt: 'A large group of secondary school girls in uniform on the school lawn' },
-  { src: '/images/primary-pupils.jpg', alt: 'Primary pupils in colourful uniforms smiling on the school compound' },
-  { src: '/images/prize-giving.jpg', alt: 'Students holding wrapped gifts during a school ceremony' },
-  { src: '/images/students-lounge.jpg', alt: 'Seven secondary students in uniform seated together' },
+  { src: '/images/fun-day.jpg', alt: 'Primary pupils in colourful uniforms watching mascots in bear and rabbit costumes' },
+  { src: '/images/exam-hall.jpg', alt: 'Secondary students writing an examination in a large hall' },
+  { src: '/images/campus-buildings.jpg', alt: 'Two red-roofed school buildings across a green lawn under a blue sky' },
   { src: '/images/class-photo.jpg', alt: 'Students and teachers holding up a framed class photograph' },
   { src: '/images/girls-line.jpg', alt: 'Secondary school girls in uniform standing in a line on the lawn' },
 ]
@@ -151,6 +157,7 @@ function Home() {
     <>
       {/* Hero */}
       <section className="hero">
+        <HeroSlides className="hero__slides" slides={heroSlides} />
         <div className="container hero__inner">
           <div className="hero__copy">
             <p className="hero__kicker">Welcome to New Beginning</p>
@@ -158,8 +165,8 @@ function Home() {
               Start your child’s beautiful and <em>bright future</em>
             </h1>
             <p className="hero__text">
-              A primary school and a vocational secondary school on one campus — two schools, one family, walking
-              the whole journey with every learner.
+              A primary school and a day and boarding vocational secondary school in Buikwe District — two schools,
+              one family, walking the whole journey with every learner.
             </p>
             <div className="hero__actions">
               <Link className="btn btn--primary" to="/admissions">
@@ -186,6 +193,52 @@ function Home() {
               <p>{card.text}</p>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* District ranking */}
+      <section className="rank-section">
+        <div className="container rank">
+          <div className="rank__copy">
+            <div className="rank__medal" aria-hidden="true">
+              <Star className="rank__star rank__star--a" size={22} />
+              <Star className="rank__star rank__star--b" size={16} />
+              <Star className="rank__star rank__star--c" size={18} />
+              <span className="rank__disc">
+                <small>No.</small>1
+              </span>
+            </div>
+            <p className="rank__kicker">
+              <Trophy size={18} aria-hidden="true" /> In the news · Weekend Vision
+            </p>
+            <h2>
+              Ranked the <em>best school</em> in Buikwe District
+            </h2>
+            <p>
+              {schools.primary.name} was listed first in Buikwe in Weekend Vision’s “Top schools per district”
+              table, published after the 2025 Primary Leaving Examination results.
+            </p>
+            <ul className="rank__facts">
+              <li>1st in Buikwe District</li>
+              <li>2025 PLE results</li>
+              <li>31 Jan – 1 Feb 2026</li>
+            </ul>
+            <Link className="btn btn--light" to="/primary">
+              Visit the primary school <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+
+          <figure className="rank__clip">
+            <div className="rank__paper">
+              <img
+                src="/images/ple-ranking.jpg"
+                alt="Newspaper table of top schools in Buikwe, with New Beginning African Children ranked first"
+                loading="lazy"
+              />
+              <span className="rank__highlight" aria-hidden="true" />
+            </div>
+            <figcaption>Weekend Vision, 31 January – 1 February 2026</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -294,7 +347,7 @@ function Home() {
             {programmes.map((item) => (
               <article className="programme" key={item.title}>
                 <div className="programme__photo">
-                  <img src={item.photo} alt={item.alt} loading="lazy" />
+                  <img src={item.photo} alt={item.alt} loading="lazy" style={{ objectPosition: item.position }} />
                   <span>{item.tag}</span>
                 </div>
                 <div className="programme__body">

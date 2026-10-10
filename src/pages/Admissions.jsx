@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import ContactList from '../components/ContactList.jsx'
 import EnquiryForm from '../components/EnquiryForm.jsx'
@@ -87,7 +88,8 @@ function Admissions() {
             </ul>
             <p className="note">
               Requirements, school fees and term dates differ between the primary and the secondary school. Please
-              contact the office for the current details for your child’s class.
+              contact the office for the current details for your child’s class. Secondary school fees are listed
+              on the <Link to="/secondary">secondary school page</Link>.
             </p>
             <ContactList />
           </div>

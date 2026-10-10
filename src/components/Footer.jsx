@@ -50,7 +50,11 @@ function Footer() {
           <ul className="footer__list footer__contact">
             <li>
               <MapPin size={16} aria-hidden="true" />
-              <span>{site.address}</span>
+              <span>
+                {site.location}
+                <br />
+                {site.address}
+              </span>
             </li>
             {site.phones.map((phone) => (
               <li key={phone.href}>

@@ -9,6 +9,7 @@ import Home from './pages/Home.jsx'
 // Home ships in the main bundle; every other route is split so the first load
 // only pays for what the visitor actually opens.
 const About = lazy(() => import('./pages/About.jsx'))
+const Primary = lazy(() => import('./pages/Primary.jsx'))
 const School = lazy(() => import('./pages/School.jsx'))
 const Admissions = lazy(() => import('./pages/Admissions.jsx'))
 const Gallery = lazy(() => import('./pages/Gallery.jsx'))
@@ -44,7 +45,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/primary" element={<School school="primary" />} />
+              <Route path="/primary" element={<Primary />} />
               <Route path="/secondary" element={<School school="secondary" />} />
               <Route path="/admissions" element={<Admissions />} />
               <Route path="/gallery" element={<Gallery />} />

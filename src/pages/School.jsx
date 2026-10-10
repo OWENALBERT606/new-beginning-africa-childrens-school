@@ -1,8 +1,21 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, GraduationCap, Hammer, Heart, Monitor, ShieldCheck, Sprout, Users } from 'lucide-react'
+import {
+  ArrowRight,
+  BookOpen,
+  Check,
+  Eye,
+  GraduationCap,
+  Hammer,
+  Heart,
+  Monitor,
+  ShieldCheck,
+  Sprout,
+  Target,
+  Users,
+} from 'lucide-react'
 import CTASection from '../components/CTASection.jsx'
 import { usePageMeta } from '../components/usePageMeta.js'
-import { schools } from '../data/site.js'
+import { schools, site } from '../data/site.js'
 
 const icons = {
   book: BookOpen,
@@ -71,6 +84,35 @@ function School({ school: key }) {
 
       <section className="section section--sand">
         <div className="container">
+          <div className="mv-grid">
+            <article className="mv">
+              <span className="feature__icon">
+                <Target size={24} aria-hidden="true" />
+              </span>
+              <h2>Our mission</h2>
+              <p>{school.mission}</p>
+            </article>
+            <article className="mv">
+              <span className="feature__icon">
+                <Eye size={24} aria-hidden="true" />
+              </span>
+              <h2>Our vision</h2>
+              <p>{school.vision}</p>
+            </article>
+          </div>
+          <div className="core-values">
+            <h3>Our core values</h3>
+            <ul className="chips">
+              {school.coreValues.map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
           <header className="section-head">
             <p className="eyebrow">What makes us different</p>
             <h2>How we teach and care</h2>
@@ -88,6 +130,43 @@ function School({ school: key }) {
                 </article>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--sand">
+        <div className="container split">
+          <div className="split__media">
+            <img src={school.offers.photo} alt={school.offers.photoAlt} loading="lazy" />
+          </div>
+          <div>
+            <p className="eyebrow">What we offer</p>
+            <h2>Hands-on training to nurture self-dependable citizens</h2>
+            <ul className="checklist">
+              {school.offers.items.map((item) => (
+                <li key={item}>
+                  <Check size={18} aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="section peek-wrap">
+        <div className="container">
+          <header className="section-head">
+            <p className="eyebrow">Our facilities</p>
+            <h2>A look inside the school</h2>
+          </header>
+          <div className="peek">
+            {school.inside.map((item) => (
+              <figure className="peek__item" key={item.src}>
+                <img src={item.src} alt={item.alt} loading="lazy" />
+                <figcaption>{item.label}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -121,6 +200,53 @@ function School({ school: key }) {
               {school.next.cta} <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="section section--sand">
+        <div className="container split split--top">
+          <div>
+            <p className="eyebrow">Fees structure</p>
+            <h2>School fees are affordable</h2>
+            <table className="fees">
+              <tbody>
+                {school.fees.rows.map((row) => (
+                  <tr key={row.item}>
+                    <th scope="row">{row.item}</th>
+                    <td>{row.amount}/=</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="note">{school.fees.note}</p>
+          </div>
+
+          <aside className="glance">
+            <h3>Contact the secondary school</h3>
+            <dl>
+              <div>
+                <dt>Phone</dt>
+                {school.contact.phones.map((phone) => (
+                  <dd key={phone.href}>
+                    <a href={phone.href}>{phone.label}</a>
+                  </dd>
+                ))}
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd>
+                  <a href={`mailto:${school.contact.email}`}>{school.contact.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd>{site.location}</dd>
+              </div>
+            </dl>
+            <a className="btn btn--primary" href={school.applyUrl} target="_blank" rel="noopener noreferrer">
+              Apply online <ArrowRight size={18} aria-hidden="true" />
+            </a>
+          </aside>
         </div>
       </section>
 
