@@ -4676,6 +4676,77 @@ ol {
   }
 }
 
+/* ---------- Floating Donate button and page ---------- */
+
+.donate-fab {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem 0.85rem 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd45e, var(--gold) 55%, #f0a500);
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 26px -10px rgb(27 29 42 / 0.6);
+  transition: transform 0.25s;
+  animation:
+    scale-in 0.5s cubic-bezier(0.3, 1.4, 0.5, 1) 1.2s backwards,
+    pulse-gold 2.6s ease-out 2.2s infinite;
+}
+
+.donate-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.donate-fab svg {
+  fill: var(--red);
+  color: var(--red);
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  40%,
+  100% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1.28);
+  }
+}
+
+@keyframes pulse-gold {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255 197 51 / 0.65);
+  }
+
+  100% {
+    box-shadow: 0 0 0 18px rgb(255 197 51 / 0);
+  }
+}
+
+.donate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 600px) {
+  .donate-fab {
+    bottom: 0.9rem;
+    left: 0.9rem;
+    padding: 0.7rem 1.1rem 0.7rem 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 .footer {

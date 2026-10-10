@@ -31,6 +31,9 @@ function Footer() {
             <li>
               <Link to="/admissions">Admissions</Link>
             </li>
+            <li>
+              <Link to="/donate">Donate</Link>
+            </li>
           </ul>
         </div>
 

@@ -135,6 +135,13 @@ export const topics = [
     links: [{ label: 'Chat on WhatsApp', href: whatsappUrl }, ...contactLinks],
   },
   {
+    id: 'donate',
+    chip: 'Donate',
+    keywords: ['donat', 'sponsor', 'support the school', 'give', 'giving', 'contribut', 'help the school', 'gift', 'charity', 'fund'],
+    text: 'Thank you for wanting to support our learners. Online giving is not set up on this website yet, so the school office shares giving details directly.',
+    links: [{ label: 'Donate page', to: '/donate' }, { label: 'Chat on WhatsApp', href: whatsappUrl }, ...contactLinks],
+  },
+  {
     id: 'membership',
     keywords: ['african children schools', 'member', 'affiliat', 'network'],
     text: `${site.name}: ${site.membership.charAt(0).toLowerCase()}${site.membership.slice(1)}.`,

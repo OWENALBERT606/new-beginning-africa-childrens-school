@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { MessageCircle, Send, X } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Heart, MessageCircle, Send, X } from 'lucide-react'
 import { fallback, findAnswer, greeting, topics, whatsappUrl } from '../data/chatbot.js'
 
 const chips = topics.filter((topic) => topic.chip)
@@ -39,6 +39,7 @@ function SupportWidgets() {
   const [draft, setDraft] = useState('')
   const [messages, setMessages] = useState([{ from: 'bot', ...greeting }])
   const logRef = useRef(null)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight })
@@ -57,6 +58,13 @@ function SupportWidgets() {
   }
 
   return (
+    <>
+      {pathname !== '/donate' && (
+        <Link className="donate-fab" to="/donate">
+          <Heart size={20} aria-hidden="true" />
+          Donate
+        </Link>
+      )}
     <div className="support">
       {open && (
         <section className="chat" role="dialog" aria-label="Website helper">
@@ -130,6 +138,7 @@ function SupportWidgets() {
         <span className="support__label">WhatsApp us</span>
       </a>
     </div>
+    </>
   )
 }
 

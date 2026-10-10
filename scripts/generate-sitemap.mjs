@@ -28,6 +28,7 @@ const routes = [
   { path: '/church', priority: '0.6' },
   { path: '/gallery', priority: '0.6' },
   { path: '/contact', priority: '0.8' },
+  { path: '/donate', priority: '0.6' },
 ]
 
 if (!SITE_URL) {

@@ -17,6 +17,7 @@ const Admissions = lazy(() => import('./pages/Admissions.jsx'))
 const Church = lazy(() => import('./pages/Church.jsx'))
 const Gallery = lazy(() => import('./pages/Gallery.jsx'))
 const Contact = lazy(() => import('./pages/Contact.jsx'))
+const Donate = lazy(() => import('./pages/Donate.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 function RouteFallback() {
@@ -60,6 +61,7 @@ function App() {
               <Route path="/church" element={<Church />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/donate" element={<Donate />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
