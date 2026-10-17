@@ -20,7 +20,6 @@ const routes = [
   { path: '/about/anthem', priority: '0.5' },
   { path: '/about/profile', priority: '0.6' },
   { path: '/about/directors-message', priority: '0.5' },
-  { path: '/about/principals-message', priority: '0.5' },
   { path: '/about/administration', priority: '0.6' },
   { path: '/primary', priority: '0.9' },
   { path: '/secondary', priority: '0.9' },

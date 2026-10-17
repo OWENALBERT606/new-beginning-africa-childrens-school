@@ -1049,6 +1049,151 @@ ol {
   }
 }
 
+/* ---------- Home: explore and spotlights ---------- */
+
+.explore {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.explore__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.explore__card:hover {
+  transform: translateY(-8px);
+}
+
+.explore__photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.explore__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.explore__card:hover .explore__photo img {
+  transform: scale(1.07);
+}
+
+.explore__label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.explore__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.explore__thumbs img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.explore__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.explore__body strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.explore__body > span:not(.link-arrow) {
+  color: var(--muted);
+}
+
+.explore__body .link-arrow {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  color: var(--red);
+}
+
+.spot-photos {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.9rem;
+  height: clamp(360px, 40vw, 480px);
+}
+
+.spot-photos img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.spot-photos img:first-child {
+  grid-row: span 2;
+}
+
+.church-spot {
+  background:
+    radial-gradient(30rem 18rem at 100% 100%, rgb(225 27 34 / 0.4), transparent 70%),
+    var(--navy);
+  color: var(--white);
+}
+
+.church-spot .split p:not([class]) {
+  color: rgb(255 255 255 / 0.82);
+}
+
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (max-width: 1080px) {
+  .explore {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .explore {
+    grid-template-columns: 1fr;
+  }
+
+  .spot-photos {
+    height: 340px;
+  }
+}
+
 /* ---------- Home: about ---------- */
 
 .accent {
@@ -4302,6 +4447,16 @@ ol {
   color: var(--white);
 }
 
+.person__photo {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 45% 30%;
+}
+
 .person h3 {
   margin-bottom: 0.2rem;
   font-size: 1.15rem;
@@ -4724,6 +4879,211 @@ ol {
   }
 }
 
+/* ---------- Director's message ---------- */
+
+.letter {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  align-items: start;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.letter__side {
+  position: sticky;
+  top: 140px;
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--navy);
+  color: var(--white);
+  text-align: center;
+}
+
+.letter__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 1rem;
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.1);
+}
+
+.letter__photo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 45% 30%;
+}
+
+.letter__role {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.letter__org {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: rgb(255 255 255 / 0.75);
+}
+
+.letter__body {
+  max-width: 44rem;
+}
+
+.letter__body > p:not([class]) {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.letter__body > p:not([class]):first-of-type {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.letter__sign {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.letter__sign strong,
+.letter__sign span {
+  display: block;
+}
+
+.letter__sign strong {
+  margin-top: 0.4rem;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .letter {
+    grid-template-columns: 1fr;
+  }
+
+  .letter__side {
+    position: static;
+  }
+}
+
+/* ---------- Church services ---------- */
+
+.hero__times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.hero__times li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  font-size: 0.9rem;
+  font-weight: 700;
+  animation: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.5s backwards;
+}
+
+.hero__times svg {
+  color: var(--gold);
+}
+
+.services {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background:
+    radial-gradient(30rem 18rem at 0% 0%, rgb(255 197 51 / 0.16), transparent 70%),
+    radial-gradient(30rem 18rem at 100% 100%, rgb(225 27 34 / 0.4), transparent 70%),
+    var(--navy);
+  color: var(--white);
+  scroll-margin-top: 120px;
+}
+
+.services .section-head p:last-child {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.service {
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--ink);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.service:hover {
+  transform: translateY(-6px);
+}
+
+.service__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.service[data-reveal='in'] .service__icon {
+  animation: icon-pop 0.7s cubic-bezier(0.3, 1.4, 0.5, 1) calc(var(--reveal-delay, 0ms) + 0.15s) backwards;
+}
+
+.service h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.6rem;
+}
+
+.service__time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--red);
+}
+
+.service p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.services__more {
+  margin: 2rem 0 0;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Floating Donate button and page ---------- */
 
 .donate-fab {
@@ -4793,6 +5153,92 @@ ol {
     padding: 0.7rem 1.1rem 0.7rem 0.9rem;
     font-size: 0.95rem;
   }
+}
+
+.friend-photo img {
+  width: 100%;
+  aspect-ratio: 536 / 351;
+  border: 8px solid var(--white);
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  transform: rotate(-1.5deg);
+  transition: transform 0.4s;
+}
+
+.friend-photo img:hover {
+  transform: rotate(0) scale(1.02);
+}
+
+.map {
+  overflow: hidden;
+  border: 6px solid var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 45vw, 460px);
+  border: 0;
+}
+
+/* ---------- Gallery tabs ---------- */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.25rem;
+}
+
+.tabs__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.3rem;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.tabs__btn:hover {
+  border-color: var(--red);
+  transform: translateY(-2px);
+}
+
+.tabs__btn.is-active {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--white);
+}
+
+.tabs__count {
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: var(--sand);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.tabs__btn.is-active .tabs__count {
+  background: rgb(255 255 255 / 0.25);
+  color: var(--white);
+}
+
+.tabs__panel {
+  animation: fade-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 /* ---------- Footer ---------- */

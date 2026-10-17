@@ -1,7 +1,9 @@
+import { MapPin } from 'lucide-react'
 import ContactList from '../components/ContactList.jsx'
 import EnquiryForm from '../components/EnquiryForm.jsx'
 import PageHero from '../components/PageHero.jsx'
 import { usePageMeta } from '../components/usePageMeta.js'
+import { site } from '../data/site.js'
 
 function Contact() {
   usePageMeta('Contact', 'Phone, email and postal address for the New Beginning primary and secondary schools.')
@@ -27,6 +29,30 @@ function Contact() {
             <h2 className="card__title">Send a message</h2>
             <EnquiryForm />
           </div>
+        </div>
+      </section>
+
+      <section className="section section--sand">
+        <div className="container">
+          <header className="section-head section-head--center">
+            <p className="eyebrow">Find us</p>
+            <h2>Visit our campus</h2>
+            <p>{site.location}</p>
+          </header>
+          <div className="map">
+            <iframe
+              title="Map showing the location of New Beginning schools"
+              src={site.map.embed}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+          <p className="home-links">
+            <a className="btn btn--primary" href={site.map.link} target="_blank" rel="noopener noreferrer">
+              <MapPin size={18} aria-hidden="true" /> Get directions
+            </a>
+          </p>
         </div>
       </section>
     </>

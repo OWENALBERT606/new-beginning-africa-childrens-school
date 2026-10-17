@@ -30,6 +30,8 @@ const school = schools.primary
 const primaryPhotos = gallery.filter((photo) => photo.school === 'Primary')
 
 const heroSlides = [
+  { src: '/images/primary-girl-smile.jpg', alt: 'A young pupil in a checked dress laughing and looking up' },
+  { src: '/images/primary-peace.jpg', alt: 'A smiling young pupil in a checked dress making a peace sign' },
   { src: '/images/primary-reading.jpg', alt: 'A primary pupil in a checked uniform reading a textbook at his desk' },
   { src: '/images/primary-meal.jpg', alt: 'Young pupils in checked dresses seated at a table with plates of food' },
   { src: '/images/primary-smile.jpg', alt: 'A young primary pupil in a checked uniform smiling at his desk' },
@@ -321,8 +323,8 @@ function Primary() {
           </header>
           <div className="pp-activities">
             <img
-              src="/images/fun-day.jpg"
-              alt="Primary pupils in colourful uniforms watching mascots in bear and rabbit costumes"
+              src="/images/primary-seesaw.jpg"
+              alt="Young pupils playing on a colourful seesaw"
               loading="lazy"
             />
             <ul>

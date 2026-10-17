@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import {
   ArrowRight,
   BookOpen,
+  Church,
+  Clock,
   GraduationCap,
   Hammer,
   Heart,
@@ -22,10 +24,10 @@ import { schools, site, values } from '../data/site.js'
 
 const heroSlides = [
   { src: '/images/reading.jpg', alt: 'Secondary students reading together outside a classroom block' },
-  { src: '/images/primary-classroom.jpg', alt: 'Primary pupils in checked uniforms clapping at their desks in a bright classroom' },
-  { src: '/images/aerial-campus.jpg', alt: 'Aerial view of red-roofed school buildings, lawns and paths surrounded by trees' },
-  { src: '/images/fun-day.jpg', alt: 'Primary pupils in colourful uniforms watching mascots in bear and rabbit costumes' },
-  { src: '/images/girls-computer-centre.jpg', alt: 'Secondary school girls in front of the Larry Bell Family Computer Centre' },
+  { src: '/images/primary-boys-tree.jpg', alt: 'Primary boys in checked shirts posing around a tree on the school compound' },
+  { src: '/images/human-pyramid.jpg', alt: 'Pupils standing on the shoulders of three smiling visitors surrounded by schoolmates', position: 'center 30%' },
+  { src: '/images/primary-running.jpg', alt: 'A young pupil in sports uniform running across the grass by the playground' },
+  { src: '/images/students-praying.jpg', alt: 'Pupils kneeling and praying during a worship service' },
 ]
 
 const heroCards = [
@@ -42,10 +44,10 @@ const heroCards = [
     to: '/secondary',
   },
   {
-    icon: Hammer,
-    title: 'Vocational Skills',
-    text: 'Practical, hands-on training alongside classwork.',
-    to: '/secondary',
+    icon: Church,
+    title: 'Church',
+    text: 'Worship with us on Sundays and Wednesdays.',
+    to: '/church',
   },
 ]
 
@@ -117,12 +119,48 @@ const reasons = [
 ]
 
 const masonry = [
+  { src: '/images/primary-girl-smile.jpg', alt: 'A young pupil in a checked dress laughing and looking up' },
   { src: '/images/girls-group.jpg', alt: 'A large group of secondary school girls in uniform on the school lawn' },
-  { src: '/images/fun-day.jpg', alt: 'Primary pupils in colourful uniforms watching mascots in bear and rabbit costumes' },
+  { src: '/images/visitor-peace.jpg', alt: 'A smiling visitor crouching beside a young pupil, both making a peace sign' },
+  { src: '/images/primary-seesaw.jpg', alt: 'Young pupils playing on a colourful seesaw' },
   { src: '/images/exam-hall.jpg', alt: 'Secondary students writing an examination in a large hall' },
-  { src: '/images/campus-buildings.jpg', alt: 'Two red-roofed school buildings across a green lawn under a blue sky' },
-  { src: '/images/class-photo.jpg', alt: 'Students and teachers holding up a framed class photograph' },
-  { src: '/images/girls-line.jpg', alt: 'Secondary school girls in uniform standing in a line on the lawn' },
+  { src: '/images/cultural-dance.jpg', alt: 'Pupils in traditional skirts performing a cultural dance' },
+  { src: '/images/piggyback.jpg', alt: 'A visitor giving a smiling pupil a piggyback ride' },
+  { src: '/images/primary-peace.jpg', alt: 'A smiling young pupil in a checked dress making a peace sign' },
+  { src: '/images/tailoring.jpg', alt: 'A student sewing at a tailoring machine' },
+]
+
+const explore = [
+  {
+    label: 'Primary School',
+    title: schools.primary.name,
+    text: 'A joyful, caring start from Primary One to Primary Seven, ranked first in Buikwe District.',
+    photo: '/images/primary-boys-tree.jpg',
+    alt: 'Primary boys in checked shirts posing around a tree',
+    thumbs: ['/images/primary-slide.jpg', '/images/primary-writing.jpg', '/images/nursery-dance.jpg'],
+    to: '/primary',
+    cta: 'Visit the primary school',
+  },
+  {
+    label: 'Secondary School',
+    title: schools.secondary.name,
+    text: 'A day and boarding school joining arts and sciences with tailoring, agriculture and ICT.',
+    photo: '/images/reading.jpg',
+    alt: 'Secondary students reading together outside a classroom block',
+    thumbs: ['/images/exam-hall.jpg', '/images/tailoring.jpg', '/images/boys-computer-centre.jpg'],
+    to: '/secondary',
+    cta: 'Visit the secondary school',
+  },
+  {
+    label: 'Church',
+    title: 'Our church family',
+    text: 'Worship, prayer and friends from near and far who stand with our learners.',
+    photo: '/images/students-praying.jpg',
+    alt: 'Pupils kneeling and praying during a worship service',
+    thumbs: ['/images/human-pyramid.jpg', '/images/visitor-shoe.jpg', '/images/community-wheelchairs.jpg'],
+    to: '/church',
+    cta: 'Visit the church page',
+  },
 ]
 
 const partners = ['Larry Bell Family', 'Behring Global Educational Foundation']
@@ -242,6 +280,41 @@ function Home() {
         </div>
       </section>
 
+      {/* Explore: primary, secondary, church */}
+      <section className="section section--sand">
+        <div className="container">
+          <header className="section-head section-head--center">
+            <p className="eyebrow">Explore New Beginning</p>
+            <h2>
+              Two schools and a <em className="accent">church family</em>
+            </h2>
+            <p>Every part of New Beginning has its own page. Pick one to find out more.</p>
+          </header>
+          <div className="explore">
+            {explore.map((item) => (
+              <Link className="explore__card" to={item.to} key={item.to}>
+                <span className="explore__photo">
+                  <img src={item.photo} alt={item.alt} loading="lazy" />
+                  <span className="explore__label">{item.label}</span>
+                </span>
+                <span className="explore__thumbs" aria-hidden="true">
+                  {item.thumbs.map((src) => (
+                    <img src={src} alt="" key={src} loading="lazy" />
+                  ))}
+                </span>
+                <span className="explore__body">
+                  <strong>{item.title}</strong>
+                  <span>{item.text}</span>
+                  <span className="link-arrow">
+                    {item.cta} <ArrowRight size={18} aria-hidden="true" />
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* About */}
       <section className="section">
         <div className="container split">
@@ -254,8 +327,8 @@ function Home() {
             />
             <img
               className="about-media__round"
-              src="/images/primary-pupils.jpg"
-              alt="Primary pupils smiling on the school compound"
+              src="/images/primary-peace.jpg"
+              alt="A smiling young pupil in a checked dress making a peace sign"
               loading="lazy"
             />
             <p className="about-media__badge">
@@ -428,6 +501,69 @@ function Home() {
         </div>
       </section>
 
+      {/* Primary school spotlight */}
+      <section className="section">
+        <div className="container split">
+          <div className="spot-photos">
+            <img src="/images/primary-slide.jpg" alt="A teacher watching young pupils come down a playground slide" loading="lazy" />
+            <img src="/images/primary-girl-smile.jpg" alt="A young pupil in a checked dress laughing" loading="lazy" />
+            <img src="/images/cultural-dance.jpg" alt="Pupils performing a cultural dance" loading="lazy" />
+          </div>
+          <div>
+            <p className="eyebrow">Primary school</p>
+            <h2>
+              A joyful start for our <em className="accent">youngest learners</em>
+            </h2>
+            <p>
+              Reading and number in the classroom, play on the swings and slides, and music and dance on special
+              days. Our pupils are guided by the motto “{schools.primary.motto}.”
+            </p>
+            <div className="hero__actions">
+              <Link className="btn btn--primary" to="/primary">
+                Visit the primary school <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <a className="btn btn--outline" href={schools.primary.applyUrl} target="_blank" rel="noopener noreferrer">
+                Apply online
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Church spotlight */}
+      <section className="section church-spot">
+        <div className="container split">
+          <div>
+            <p className="eyebrow eyebrow--light">Church</p>
+            <h2>
+              Faith at the heart of <em className="accent-light">New Beginning</em>
+            </h2>
+            <p>
+              Our schools are built on a born-again Christian foundation and welcome every denomination. Friends
+              from near and far visit to pray, play and serve alongside our learners.
+            </p>
+            <ul className="hero__times">
+              {site.services.map((service) => (
+                <li key={service.day}>
+                  <Clock size={16} aria-hidden="true" />
+                  {service.day} · {service.time}
+                </li>
+              ))}
+            </ul>
+            <div className="hero__actions">
+              <Link className="btn btn--light" to="/church">
+                Visit the church page <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+          <div className="spot-photos spot-photos--church">
+            <img src="/images/students-praying.jpg" alt="Pupils kneeling and praying during a worship service" loading="lazy" />
+            <img src="/images/visitor-shoe.jpg" alt="A visitor kneeling to fasten a young pupil’s shoe" loading="lazy" />
+            <img src="/images/visitors-team-group.jpg" alt="Pupils gathered on the field around two seated visitors" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
       {/* Photo gallery */}
       <section className="section">
         <div className="container">
@@ -436,7 +572,7 @@ function Home() {
             <h2>
               Our photo <em className="accent">gallery</em>
             </h2>
-            <p>Moments from our learners, our teachers and our campus.</p>
+            <p>Moments from our primary school, our secondary school and our church family.</p>
           </header>
           <div className="masonry">
             {masonry.map((photo) => (
@@ -445,6 +581,20 @@ function Home() {
               </Link>
             ))}
           </div>
+          <p className="home-links">
+            <Link className="btn btn--outline" to="/primary">
+              Primary School
+            </Link>
+            <Link className="btn btn--outline" to="/secondary">
+              Secondary School
+            </Link>
+            <Link className="btn btn--outline" to="/church">
+              Church
+            </Link>
+            <Link className="btn btn--primary" to="/gallery">
+              Full gallery <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </p>
         </div>
       </section>
 

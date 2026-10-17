@@ -53,7 +53,6 @@ function App() {
               <Route path="/about/anthem" element={<AboutSection page="anthem" />} />
               <Route path="/about/profile" element={<AboutSection page="profile" />} />
               <Route path="/about/directors-message" element={<AboutSection page="director" />} />
-              <Route path="/about/principals-message" element={<AboutSection page="principal" />} />
               <Route path="/about/administration" element={<AboutSection page="administration" />} />
               <Route path="/primary" element={<Primary />} />
               <Route path="/secondary" element={<Secondary />} />

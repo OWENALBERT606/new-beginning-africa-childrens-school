@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, HandHeart, Users } from 'lucide-react'
+import { ArrowRight, BookOpen, CalendarDays, Clock, HandHeart, Users } from 'lucide-react'
 import HeroSlides from '../components/HeroSlides.jsx'
 import PhotoGallery from '../components/PhotoGallery.jsx'
 import { usePageMeta } from '../components/usePageMeta.js'
 import { gallery, schools, site } from '../data/site.js'
 
-const communityPhotos = gallery.filter((photo) => photo.school === 'Community')
+const communityPhotos = gallery.filter((photo) => photo.school === 'Church' || photo.school === 'Community')
 
 const heroSlides = [
+  {
+    src: '/images/students-praying.jpg',
+    alt: 'Pupils in checked uniforms kneeling and praying during a worship service',
+    position: 'center 40%',
+  },
+  {
+    src: '/images/human-pyramid.jpg',
+    alt: 'Three pupils standing on the shoulders of three smiling visitors surrounded by schoolmates',
+    position: 'center 30%',
+  },
+  {
+    src: '/images/visitors-team-group.jpg',
+    alt: 'Pupils gathered on the field around two seated visitors and a football',
+    position: 'center 60%',
+  },
   {
     src: '/images/community-wheelchairs.jpg',
     alt: 'A large group of community members seated in new wheelchairs with visitors standing behind them at the school',
@@ -58,6 +73,14 @@ function Church() {
               Faith at the heart of <em>New Beginning</em>
             </h1>
             <p className="hero__text">The church family behind our schools, and the community we serve together.</p>
+            <ul className="hero__times">
+              {site.services.map((service) => (
+                <li key={service.day}>
+                  <Clock size={16} aria-hidden="true" />
+                  {service.day} · {service.time}
+                </li>
+              ))}
+            </ul>
             <div className="hero__actions">
               <Link className="btn btn--primary" to="/contact">
                 Get in touch <ArrowRight size={18} aria-hidden="true" />
@@ -87,10 +110,40 @@ function Church() {
           </div>
           <div className="split__media">
             <img
-              src="/images/staff-team.jpg"
-              alt="A long row of staff standing in front of a school building marked African Children Schools"
+              src="/images/students-praying.jpg"
+              alt="Pupils in checked uniforms kneeling and praying during a worship service"
               loading="lazy"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Friends of the school */}
+      <section className="section section--sand">
+        <div className="container split">
+          <div className="friend-photo">
+            <img
+              src="/images/friend-with-pupil.jpg"
+              alt="A smiling man in a cap holding a young pupil in a checked school dress"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Friends of the school</p>
+            <h2>Love that crosses oceans</h2>
+            <p>
+              Friends and partners from near and far stand with our learners. They visit, pray, play and give, so
+              that every child at New Beginning knows they are loved and valued.
+            </p>
+            <p>Our schools are under the patronage of Dr. Peter Nalos.</p>
+            <div className="hero__actions">
+              <Link className="btn btn--primary" to="/donate">
+                Stand with our children <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <Link className="btn btn--outline" to="/about/administration">
+                Meet our founders
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -158,25 +211,40 @@ function Church() {
         <div className="container">
           <header className="section-head section-head--center">
             <p className="eyebrow">Our people</p>
-            <h2>Staff, friends and community</h2>
+            <h2>Worship, friends and community</h2>
           </header>
           <PhotoGallery photos={communityPhotos} className="gallery--four" />
         </div>
       </section>
 
-      {/* Worship */}
-      <section className="sp-cta">
-        <div className="container sp-cta__inner">
-          <div>
+      {/* Services */}
+      <section className="services" id="services">
+        <div className="container">
+          <header className="section-head section-head--center section-head--light">
             <p className="sp-cta__kicker">Worship with us</p>
-            <h2>Service times will be published here soon</h2>
-            <p>Until then, our office will gladly tell you when and where we meet.</p>
+            <h2>Church services</h2>
+            <p>Everyone is welcome to join us.</p>
+          </header>
+          <div className="services__grid">
+            {site.services.map((service) => (
+              <article className="service" key={service.day}>
+                <span className="service__icon">
+                  <CalendarDays size={26} aria-hidden="true" />
+                </span>
+                <h3>{service.day}</h3>
+                <p className="service__time">
+                  <Clock size={18} aria-hidden="true" />
+                  {service.time}
+                </p>
+                <p>{service.name}</p>
+              </article>
+            ))}
           </div>
-          <div className="sp-cta__actions">
+          <p className="services__more">
             <Link className="btn btn--primary" to="/contact">
-              Contact the office <ArrowRight size={18} aria-hidden="true" />
+              Ask for directions <ArrowRight size={18} aria-hidden="true" />
             </Link>
-          </div>
+          </p>
         </div>
       </section>
     </div>

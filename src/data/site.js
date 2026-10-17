@@ -7,6 +7,10 @@ export const site = {
   description:
     "New Beginning African Children's School and New Beginning Vocational Secondary School — a primary and a secondary school growing together in Buikwe District, Uganda.",
   membership: 'A member of African Children Schools',
+  services: [
+    { day: 'Sunday', time: '10:00am – 1:00pm', name: 'Sunday service' },
+    { day: 'Wednesday', time: '4:00pm', name: 'Midweek service' },
+  ],
   theme: {
     year: '2026',
     text: 'A rope made of three cords is hard to break',
@@ -15,6 +19,11 @@ export const site = {
   },
   location: 'Bugeye LC 1 village, Lubanyi Parish, Buikwe District',
   address: 'P.O. Box 11731, Kampala, Uganda',
+  map: {
+    embed:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.747174808938!2d33.00984227349239!3d0.34216496398904855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dd98df0368469%3A0xcfd66f8241075237!2sNew%20beginning%20africa%20school!5e0!3m2!1sen!2sug!4v1792223552481!5m2!1sen!2sug',
+    link: 'https://www.google.com/maps/search/?api=1&query=0.34216496398904855,33.00984227349239',
+  },
   email: 'newbegvocs@gmail.com',
   // WhatsApp number in international format, digits only.
   whatsapp: '256704345743',
@@ -29,7 +38,6 @@ export const aboutLinks = [
   { label: 'School Anthem', to: '/about/anthem' },
   { label: 'School Profile', to: '/about/profile' },
   { label: 'Director’s Message', to: '/about/directors-message' },
-  { label: 'Principal’s Message', to: '/about/principals-message' },
   { label: 'Administration', to: '/about/administration' },
 ]
 
@@ -293,6 +301,174 @@ export const values = [
 ]
 
 export const gallery = [
+  {
+    src: '/images/students-praying.jpg',
+    alt: 'Pupils in checked uniforms kneeling and praying during a worship service',
+    caption: 'Worship and prayer',
+    school: 'Church',
+  },
+  {
+    src: '/images/girl-praying.jpg',
+    alt: 'A young pupil standing with eyes closed in prayer during a service',
+    caption: 'A moment of prayer',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitor-shoe.jpg',
+    alt: 'A visitor kneeling to fasten a young pupil’s shoe on the school compound',
+    caption: 'Caring for our little ones',
+    school: 'Church',
+  },
+  {
+    src: '/images/human-pyramid.jpg',
+    alt: 'Three pupils standing on the shoulders of three smiling visitors surrounded by schoolmates',
+    caption: 'Fun with visiting friends',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitors-team-group.jpg',
+    alt: 'Pupils gathered on the field around two seated visitors and a football',
+    caption: 'After the match',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitor-peace.jpg',
+    alt: 'A smiling visitor crouching beside a young pupil, both making a peace sign',
+    caption: 'Friends of the school',
+    school: 'Church',
+  },
+  {
+    src: '/images/rugby-visitors.jpg',
+    alt: 'Pupils and visitors running across the field playing a game of rugby',
+    caption: 'Game time with visitors',
+    school: 'Church',
+  },
+  {
+    src: '/images/football-visitor.jpg',
+    alt: 'Pupils cheering as a visitor plays football with them in front of a school building',
+    caption: 'Football on the field',
+    school: 'Church',
+  },
+  {
+    src: '/images/dance-visitor.jpg',
+    alt: 'A visitor and pupils dancing with arms raised on the school field',
+    caption: 'Dancing together',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitor-students.jpg',
+    alt: 'A visitor standing among a smiling group of pupils on the field',
+    caption: 'All smiles',
+    school: 'Church',
+  },
+  {
+    src: '/images/piggyback.jpg',
+    alt: 'A visitor giving a smiling pupil a piggyback ride',
+    caption: 'Piggyback rides',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitor-classroom.jpg',
+    alt: 'A visitor waving among a classroom full of excited pupils',
+    caption: 'A classroom visit',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitors-field-group.jpg',
+    alt: 'Visitors and pupils posing together on the school field',
+    caption: 'Visitors on the field',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitors-building-group.jpg',
+    alt: 'A team of visitors standing with a large group of pupils in front of a school building',
+    caption: 'Welcoming our visitors',
+    school: 'Church',
+  },
+  {
+    src: '/images/visitor-little-boy.jpg',
+    alt: 'A visitor standing with a young pupil outside a classroom',
+    caption: 'A new friend',
+    school: 'Church',
+  },
+  {
+    src: '/images/evening-talk.jpg',
+    alt: 'A visitor talking with a boy in the evening on the school grounds',
+    caption: 'An evening conversation',
+    school: 'Church',
+  },
+  {
+    src: '/images/primary-girl-smile.jpg',
+    alt: 'A young pupil in a checked dress laughing and looking up',
+    caption: 'Pure joy',
+    school: 'Primary',
+  },
+  {
+    src: '/images/primary-peace.jpg',
+    alt: 'A smiling young pupil in a checked dress making a peace sign against a red wall',
+    caption: 'Peace!',
+    school: 'Primary',
+  },
+  {
+    src: '/images/primary-boys-tree.jpg',
+    alt: 'Primary boys in checked shirts and dark shorts posing around a tree',
+    caption: 'Friends under the tree',
+    school: 'Primary',
+  },
+  {
+    src: '/images/primary-running.jpg',
+    alt: 'A young pupil in sports uniform running across the grass by the playground',
+    caption: 'Running and playing',
+    school: 'Primary',
+  },
+  {
+    src: '/images/primary-seesaw.jpg',
+    alt: 'Young pupils playing on a colourful seesaw',
+    caption: 'Playground fun',
+    school: 'Primary',
+  },
+  {
+    src: '/images/primary-slide.jpg',
+    alt: 'A teacher watching young pupils come down a playground slide',
+    caption: 'On the slide',
+    school: 'Primary',
+  },
+  {
+    src: '/images/primary-writing.jpg',
+    alt: 'A primary pupil writing in his exercise book at a wooden desk',
+    caption: 'Hard at work',
+    school: 'Primary',
+  },
+  {
+    src: '/images/nursery-dance.jpg',
+    alt: 'Young pupils in colourful costumes and face paint performing with their teacher',
+    caption: 'A nursery performance',
+    school: 'Primary',
+  },
+  {
+    src: '/images/cultural-dance.jpg',
+    alt: 'Pupils in traditional skirts performing a cultural dance',
+    caption: 'Cultural dance',
+    school: 'Primary',
+  },
+  {
+    src: '/images/flags-building.jpg',
+    alt: 'A school building with a row of flags on the lawn in front',
+    caption: 'Flags flying on campus',
+    school: 'Campus',
+  },
+  {
+    src: '/images/girls-home.jpg',
+    alt: 'A long building with columns and a red roof labelled Linda Sue Porter Girls Home',
+    caption: 'Linda Sue Porter Girls Home',
+    school: 'Campus',
+  },
+  {
+    src: '/images/school-grounds.jpg',
+    alt: 'Lawns, palm trees and a school building beside the driveway',
+    caption: 'The school grounds',
+    school: 'Campus',
+  },
   {
     src: '/images/primary-classroom.jpg',
     alt: 'Primary pupils in checked uniforms clapping at their desks in a bright classroom',

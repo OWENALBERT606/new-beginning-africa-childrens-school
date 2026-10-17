@@ -118,8 +118,8 @@ export const topics = [
   {
     id: 'church',
     chip: 'Church',
-    keywords: ['church', 'faith', 'christian', 'religio', 'denomination', 'pray', 'worship', 'service time', 'sunday', 'born again', 'muslim', 'catholic'],
-    text: 'Our schools are built on a born-again Christian foundation and embrace all religious denominations. Church service times are not published on this website yet, so please ask the office.',
+    keywords: ['church', 'faith', 'christian', 'religio', 'denomination', 'pray', 'worship', 'service', 'sunday', 'wednesday', 'mass', 'born again', 'muslim', 'catholic'],
+    text: `Church services: ${site.services.map((service) => `${service.day} ${service.time}`).join(' and ')}. Everyone is welcome. Our schools are built on a born-again Christian foundation and embrace all religious denominations.`,
     links: [{ label: 'Church page', to: '/church' }, ...contactLinks],
   },
   {
@@ -147,8 +147,14 @@ export const topics = [
     text: `${site.name}: ${site.membership.charAt(0).toLowerCase()}${site.membership.slice(1)}.`,
   },
   {
+    id: 'director',
+    keywords: ['director', 'director’s message', "director's message"],
+    text: 'You can read a message from our director on the website.',
+    links: [{ label: 'Director’s message', to: '/about/directors-message' }],
+  },
+  {
     id: 'people',
-    keywords: ['anthem', 'principal', 'head teacher', 'headteacher', 'headmaster', 'director', 'staff', 'teacher', 'administration'],
+    keywords: ['anthem', 'principal', 'head teacher', 'headteacher', 'headmaster', 'staff', 'teacher', 'administration'],
     text: 'That information is still being prepared and is not on the website yet. Please ask the school office.',
     links: [{ label: 'Administration', to: '/about/administration' }, ...contactLinks],
   },
