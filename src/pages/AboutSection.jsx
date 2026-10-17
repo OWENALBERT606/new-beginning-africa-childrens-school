@@ -22,7 +22,7 @@ const heroes = {
   },
   director: {
     title: 'Director’s message',
-    text: 'A word from the director of New Beginning.',
+    text: 'A word from Bishop Edward Ssemango, director of New Beginning.',
   },
   administration: {
     title: 'Administration',
@@ -77,8 +77,7 @@ function History() {
   )
 }
 
-// Draft prepared for the school to review. The signature names the role only;
-// add the director's name (and a photo in public/images) once approved.
+// Draft prepared for the school to review before publishing.
 const directorMessage = [
   'Welcome to New Beginning African Children Schools.',
   'Our name says what we believe about every child who walks through our gate: whatever their story so far, here they can begin again. We started this work with a vision to give children a sense of belonging and a holistic education for the transformation of Africa, and that vision still guides every decision we make.',
@@ -92,8 +91,9 @@ function DirectorMessage() {
   return (
     <div className="container letter">
       <aside className="letter__side">
-        <img className="letter__photo" src="/images/director.jpg" alt="The director of New Beginning speaking at a microphone" />
-        <p className="letter__role">The Director</p>
+        <img className="letter__photo" src="/images/director.jpg" alt="Bishop Edward Ssemango, director of New Beginning, speaking at a microphone" />
+        <p className="letter__role">Bishop Edward Ssemango</p>
+        <p className="letter__org">Director &amp; Founder</p>
         <p className="letter__org">{site.name}</p>
       </aside>
       <article className="letter__body">
@@ -104,8 +104,8 @@ function DirectorMessage() {
         ))}
         <p className="letter__sign">
           With every blessing,
-          <strong>The Director</strong>
-          <span>{site.name}</span>
+          <strong>Bishop Edward Ssemango</strong>
+          <span>Director, {site.name}</span>
         </p>
       </article>
     </div>
