@@ -3,12 +3,9 @@ import { ArrowRight, Eye, Target } from 'lucide-react'
 import AboutNav from '../components/AboutNav.jsx'
 import CTASection from '../components/CTASection.jsx'
 import PageHero from '../components/PageHero.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { schools, values } from '../data/site.js'
 
 function About() {
-  usePageMeta('About us', 'Who we are: a primary and a vocational secondary school sharing one campus and one set of values.')
-
   return (
     <>
       <PageHero

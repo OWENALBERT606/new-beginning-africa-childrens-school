@@ -23,6 +23,9 @@ function HeroSlides({ slides, interval = 5000, className = '' }) {
           src={slide.src}
           alt={index === active ? slide.alt : ''}
           aria-hidden={index !== active}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          fetchPriority={index === 0 ? 'high' : 'low'}
+          decoding="async"
           style={slide.position ? { objectPosition: slide.position } : undefined}
         />
       ))}

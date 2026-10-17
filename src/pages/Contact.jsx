@@ -2,12 +2,9 @@ import { MapPin } from 'lucide-react'
 import ContactList from '../components/ContactList.jsx'
 import EnquiryForm from '../components/EnquiryForm.jsx'
 import PageHero from '../components/PageHero.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { site } from '../data/site.js'
 
 function Contact() {
-  usePageMeta('Contact', 'Phone, email and postal address for the New Beginning primary and secondary schools.')
-
   return (
     <>
       <PageHero

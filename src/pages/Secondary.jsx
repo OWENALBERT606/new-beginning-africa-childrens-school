@@ -20,7 +20,6 @@ import {
 } from 'lucide-react'
 import HeroSlides from '../components/HeroSlides.jsx'
 import PhotoGallery from '../components/PhotoGallery.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { gallery, schools, site } from '../data/site.js'
 
 const school = schools.secondary
@@ -111,8 +110,6 @@ const life = [
 ]
 
 function Secondary() {
-  usePageMeta(school.name, school.summary)
-
   return (
     <div className="sp theme-secondary">
       {/* Hero */}

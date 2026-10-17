@@ -1,6 +1,5 @@
 import { BedDouble, HandHeart, Mail, Monitor, Phone } from 'lucide-react'
 import PageHero from '../components/PageHero.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { site } from '../data/site.js'
 
 const donateWhatsApp = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
@@ -26,8 +25,6 @@ const impact = [
 ]
 
 function Donate() {
-  usePageMeta('Donate', 'Support the pupils and students of New Beginning. Contact the school office for how to give.')
-
   return (
     <>
       <PageHero

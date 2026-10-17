@@ -3,7 +3,6 @@ import { ArrowRight, Check } from 'lucide-react'
 import ContactList from '../components/ContactList.jsx'
 import EnquiryForm from '../components/EnquiryForm.jsx'
 import PageHero from '../components/PageHero.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { schools } from '../data/site.js'
 
 const steps = [
@@ -20,8 +19,6 @@ const documents = [
 ]
 
 function Admissions() {
-  usePageMeta('Admissions', 'Apply online to the primary or the secondary school at New Beginning, and reach our admissions office.')
-
   return (
     <>
       <PageHero

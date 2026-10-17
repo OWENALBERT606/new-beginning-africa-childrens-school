@@ -1,1 +1,2 @@
-/*  /index.html  200
+# Every page has its own HTML file (see scripts/prerender-seo.mjs); anything else is a real 404.
+/*  /404.html  404

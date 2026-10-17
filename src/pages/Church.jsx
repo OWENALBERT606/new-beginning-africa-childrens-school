@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, BookOpen, CalendarDays, Clock, HandHeart, Users } from 'lucide-react'
 import HeroSlides from '../components/HeroSlides.jsx'
 import PhotoGallery from '../components/PhotoGallery.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { gallery, schools, site } from '../data/site.js'
 
 const communityPhotos = gallery.filter((photo) => photo.school === 'Church' || photo.school === 'Community')
@@ -59,8 +58,6 @@ const pillars = [
 ]
 
 function Church() {
-  usePageMeta('Church', 'The faith behind New Beginning, and the people and community we serve.')
-
   return (
     <div className="church">
       {/* Hero */}

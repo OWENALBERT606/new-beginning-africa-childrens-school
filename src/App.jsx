@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import ScrollManager from './components/ScrollManager.jsx'
+import SeoManager from './components/SeoManager.jsx'
 import SupportWidgets from './components/SupportWidgets.jsx'
 import { useScrollReveal } from './components/useScrollReveal.js'
 import Home from './pages/Home.jsx'
@@ -40,6 +41,7 @@ function App() {
       </a>
 
       <ScrollManager />
+      <SeoManager />
       <Header />
 
       <main id="main">

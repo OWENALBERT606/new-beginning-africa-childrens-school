@@ -2,7 +2,6 @@ import { useState } from 'react'
 import CTASection from '../components/CTASection.jsx'
 import PageHero from '../components/PageHero.jsx'
 import PhotoGallery from '../components/PhotoGallery.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { gallery } from '../data/site.js'
 
 // Each tab lists the gallery tags it shows; campus photos appear under "All".
@@ -16,7 +15,6 @@ const tabs = [
 const photosFor = (tab) => (tab.tags ? gallery.filter((photo) => tab.tags.includes(photo.school)) : gallery)
 
 function Gallery() {
-  usePageMeta('Gallery', 'Photographs of pupils, students, staff and campus life at New Beginning.')
   const [active, setActive] = useState('all')
   const tab = tabs.find((item) => item.id === active)
   const photos = photosFor(tab)

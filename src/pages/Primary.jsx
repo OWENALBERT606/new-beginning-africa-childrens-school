@@ -23,7 +23,6 @@ import {
 } from 'lucide-react'
 import HeroSlides from '../components/HeroSlides.jsx'
 import PhotoGallery from '../components/PhotoGallery.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { gallery, schools, site } from '../data/site.js'
 
 const school = schools.primary
@@ -172,8 +171,6 @@ function QuickEnquiry() {
 }
 
 function Primary() {
-  usePageMeta(school.name, school.summary)
-
   return (
     <div className="pp theme-primary">
       {/* Hero */}

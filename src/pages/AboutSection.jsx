@@ -4,7 +4,6 @@ import AboutNav from '../components/AboutNav.jsx'
 import CTASection from '../components/CTASection.jsx'
 import PageHero from '../components/PageHero.jsx'
 import Pending from '../components/Pending.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { schools, site } from '../data/site.js'
 
 const heroes = {
@@ -225,7 +224,6 @@ function Administration() {
 
 function AboutSection({ page }) {
   const hero = heroes[page]
-  usePageMeta(hero.title, hero.text)
 
   return (
     <>

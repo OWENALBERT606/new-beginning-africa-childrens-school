@@ -22,6 +22,8 @@ export const site = {
   map: {
     embed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.747174808938!2d33.00984227349239!3d0.34216496398904855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dd98df0368469%3A0xcfd66f8241075237!2sNew%20beginning%20africa%20school!5e0!3m2!1sen!2sug!4v1792223552481!5m2!1sen!2sug',
+    lat: 0.34216496398904855,
+    lng: 33.00984227349239,
     link: 'https://www.google.com/maps/search/?api=1&query=0.34216496398904855,33.00984227349239',
   },
   email: 'newbegvocs@gmail.com',

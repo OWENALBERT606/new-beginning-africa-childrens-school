@@ -1,6 +1,0 @@
-# The official domain has not been published yet. Once it is, point the sitemap
-# reference at it (or serve robots.txt with the confirmed domain).
-User-agent: *
-Allow: /
-
-# Sitemap: https://YOUR-OFFICIAL-DOMAIN/sitemap.xml

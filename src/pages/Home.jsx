@@ -19,7 +19,6 @@ import {
 } from 'lucide-react'
 import EnquiryForm from '../components/EnquiryForm.jsx'
 import HeroSlides from '../components/HeroSlides.jsx'
-import { usePageMeta } from '../components/usePageMeta.js'
 import { schools, site, values } from '../data/site.js'
 
 const heroSlides = [
@@ -189,8 +188,6 @@ function SchoolCard({ school }) {
 }
 
 function Home() {
-  usePageMeta()
-
   return (
     <>
       {/* Hero */}
