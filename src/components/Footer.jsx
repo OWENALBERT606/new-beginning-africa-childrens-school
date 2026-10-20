@@ -78,6 +78,12 @@ function Footer() {
         <span>
           © {year} {site.name}. All rights reserved.
         </span>
+        <span>
+          Powered by{' '}
+          <a className="footer__credit" href="https://www.maripatechagency.com" target="_blank" rel="noopener noreferrer">
+            MARIPA TECH AGENCY
+          </a>
+        </span>
       </div>
     </footer>
   )

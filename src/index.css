@@ -5330,6 +5330,17 @@ ol {
   padding: 1.25rem 0;
   border-top: 1px solid rgb(255 255 255 / 0.12);
   font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  /* Leaves room for the floating Donate, chat and WhatsApp buttons. */
+  padding-bottom: 6rem;
+}
+
+.footer .footer__credit {
+  font-weight: 700;
+  color: var(--white);
 }
 
 /* ---------- Responsive ---------- */
