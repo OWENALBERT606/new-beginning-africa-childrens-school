@@ -90,7 +90,7 @@ function DirectorMessage() {
   return (
     <div className="container letter">
       <aside className="letter__side">
-        <img className="letter__photo" src="/images/director.jpg" alt="Bishop Edward Ssemango, director of New Beginning, speaking at a microphone" />
+        <img className="letter__photo" src="/images/director.jpg" alt="Portrait of Bishop Edward Ssemango, director of New Beginning" />
         <p className="letter__role">Bishop Edward Ssemango</p>
         <p className="letter__org">Director &amp; Founder</p>
         <p className="letter__org">{site.name}</p>
