@@ -3,8 +3,7 @@ import { ArrowRight, Eye, Target, UserRound } from 'lucide-react'
 import AboutNav from '../components/AboutNav.jsx'
 import CTASection from '../components/CTASection.jsx'
 import PageHero from '../components/PageHero.jsx'
-import Pending from '../components/Pending.jsx'
-import { schools, site } from '../data/site.js'
+import { anthem, schools, site } from '../data/site.js'
 
 const heroes = {
   history: {
@@ -49,7 +48,7 @@ const milestones = [
 
 const founders = [
   { name: 'Bishop Edward Ssemango', role: 'Founder', photo: '/images/director.jpg' },
-  { name: 'Pastor Eva Nabaggala Ssemango', role: 'Founder' },
+  { name: 'Pastor Eva Nabaggala Ssemango', role: 'Founder', photo: '/images/eva-ssemango.jpg', position: 'center 38%' },
   { name: 'Dr. Peter Nalos', role: 'Patron', photo: '/images/peter-nalos.jpg', position: 'center 30%' },
 ]
 
@@ -107,6 +106,33 @@ function DirectorMessage() {
           <span>Director, {site.name}</span>
         </p>
       </article>
+    </div>
+  )
+}
+
+function Anthem() {
+  return (
+    <div className="container anthem">
+      <header className="section-head section-head--center">
+        <p className="eyebrow">Our school anthem</p>
+        <h2>We are one, we are family</h2>
+      </header>
+      <ol className="anthem__parts">
+        {anthem.map((part, index) => (
+          <li className={`anthem__part${part.label === 'Chorus' ? ' anthem__part--chorus' : ''}`} key={index}>
+            <p className="anthem__label">
+              {part.label}
+              {part.repeat > 1 && <span>×{part.repeat}</span>}
+            </p>
+            {part.lines.map((line) => (
+              <p className="anthem__line" key={line}>
+                {line}
+              </p>
+            ))}
+          </li>
+        ))}
+      </ol>
+      <p className="anthem__end">End</p>
     </div>
   )
 }
@@ -217,7 +243,6 @@ function Administration() {
           </article>
         ))}
       </div>
-      <Pending what="The head teachers and administrative staff of both schools" />
     </div>
   )
 }
@@ -234,11 +259,7 @@ function AboutSection({ page }) {
         {page === 'history' && <History />}
         {page === 'profile' && <Profile />}
         {page === 'administration' && <Administration />}
-        {page === 'anthem' && (
-          <div className="container">
-            <Pending what="The words of our school anthem" />
-          </div>
-        )}
+        {page === 'anthem' && <Anthem />}
         {page === 'director' && (
           <div className="container">
             <DirectorMessage />

@@ -35,6 +35,15 @@ export const site = {
   ],
 }
 
+// The school anthem, as supplied by the school. `repeat` is how many times the part is sung.
+export const anthem = [
+  { label: 'Chorus', repeat: 2, lines: ['We are one', 'We are family', 'Born to win', 'Because we are one'] },
+  { label: 'Stanza 1', repeat: 2, lines: ['African children', 'Born for excellence', 'Living to love', 'And loving to learn'] },
+  { label: 'Chorus', repeat: 2, lines: ['We are the New Beginning', 'We are family', 'Born to win', 'Because we are one'] },
+  { label: 'Stanza 2', repeat: 2, lines: ['You’re my brother', 'You’re my sister', 'Born to win', 'Because we are one'] },
+  { label: 'Chorus', repeat: 2, lines: ['We are one', 'We are family', 'Born to win', 'Because we are one'] },
+]
+
 export const aboutLinks = [
   { label: 'Our History', to: '/about/history' },
   { label: 'School Anthem', to: '/about/anthem' },

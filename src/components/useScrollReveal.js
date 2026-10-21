@@ -34,6 +34,7 @@ const SELECTOR = [
   '.pending',
   '.verse-band blockquote',
   '.service',
+  '.anthem__part',
   '.letter > *',
   '.profile-facts > div',
   '.partner',

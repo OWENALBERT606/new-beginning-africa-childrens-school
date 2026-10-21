@@ -1,7 +1,7 @@
 // Answers for the website help assistant. Nothing here is generated: every
 // reply is written out below from the facts in site.js, and questions are
 // matched to a reply by keywords.
-import { schools, site } from './site.js'
+import { anthem, schools, site } from './site.js'
 
 const { primary, secondary } = schools
 const fee = (label) => secondary.fees.rows.find((row) => row.item.toLowerCase().includes(label))?.amount
@@ -153,8 +153,14 @@ export const topics = [
     links: [{ label: 'Director’s message', to: '/about/directors-message' }],
   },
   {
+    id: 'anthem',
+    keywords: ['anthem', 'school song'],
+    text: `Our school anthem begins: “${anthem[0].lines.map((line, i) => (i ? line.toLowerCase() : line)).join(', ')}.” You can read all the words on the website.`,
+    links: [{ label: 'School anthem', to: '/about/anthem' }],
+  },
+  {
     id: 'people',
-    keywords: ['anthem', 'principal', 'head teacher', 'headteacher', 'headmaster', 'staff', 'teacher', 'administration'],
+    keywords: ['principal', 'head teacher', 'headteacher', 'headmaster', 'staff', 'teacher', 'administration'],
     text: 'That information is still being prepared and is not on the website yet. Please ask the school office.',
     links: [{ label: 'Administration', to: '/about/administration' }, ...contactLinks],
   },

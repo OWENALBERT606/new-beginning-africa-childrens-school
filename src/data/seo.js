@@ -36,7 +36,7 @@ export const pages = {
   },
   '/about/anthem': {
     title: `School Anthem | ${brand}`,
-    description: 'The school anthem of New Beginning African Children Schools in Buikwe District, Uganda.',
+    description: 'Read the words of the New Beginning school anthem: “We are one, we are family, born to win, because we are one.”',
     image: '/images/primary-choir.jpg',
     crumbs: [{ name: 'About', path: '/about' }],
     priority: '0.4',
